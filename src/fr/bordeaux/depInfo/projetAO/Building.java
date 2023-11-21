@@ -1,5 +1,14 @@
+/*
+ * Approche Objet
+ * TD 6                               Fantasy Cards Game
+ * Projet universitaire                         2023/2024
+ */
+
 package fr.bordeaux.depInfo.projetAO;
 
+/**
+ * Building Class
+ */
 public class Building {
     // The name of the building.
     final String name;
