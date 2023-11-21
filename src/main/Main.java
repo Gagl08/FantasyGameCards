@@ -4,7 +4,11 @@
  * Projet universitaire                         2023/2024
  */
 
-package fr.bordeaux.depInfo.projetAO;
+package main;
 
-public class Board {
+public class Main {
+    public static void main(String[] args) {
+
+
+    }
 }
