@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PlayerHand {
     //General Ressources use by the player
-    Ressources general_Ressources;
+    Stockage general_Ressources;
     //Carte playable of the player
     ArrayList <Building> hand = new ArrayList<Building>();
 
