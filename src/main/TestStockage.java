@@ -1,3 +1,9 @@
+/*
+ * Approche Objet
+ * TD 6                               Fantasy Cards Game
+ * Projet universitaire                         2023/2024
+ */
+
 package main;
 
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;

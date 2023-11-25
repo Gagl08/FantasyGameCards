@@ -51,4 +51,10 @@ public class Farm extends Decorateur {
         super.getCapacity().addCapacity(food);
         return super.getCapacity();
     }
+
+    @Override
+    public int getNbWorkerNeeded() {
+        super.setNbWorkerNeeded(5);
+        return super.getNbWorkerNeeded();
+    }
 }

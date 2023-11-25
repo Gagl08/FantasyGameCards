@@ -23,12 +23,12 @@ public class Building implements Building_Interface{
 
 ////////////////////////////////////////////////////////
 /////////////////////CONSTRUCTORS///////////////////////
-    public Building(String name, int nbWorkerNeeded, int timerBuild) {
+    public Building(String name) {
         this.name = name;
         this.nbHabAllowed = 0;
-        this.nbWorkerNeeded = nbWorkerNeeded;
+        this.nbWorkerNeeded = 0;
         this.active = false;
-        this.timerBuild = timerBuild;
+        this.timerBuild = 0;
     }
 
 ////////////////////////////////////////////////////////

@@ -11,9 +11,9 @@ package fr.bordeaux.depInfo.projetAO;
 public class Card {
     int compteur = 1;
     int id;
-    Building building;
+    Building_Interface building;
 
-    public Card (Building building){
+    public Card (Building_Interface building){
         this.id=compteur;
         compteur++;
         this.building=building;
@@ -23,7 +23,7 @@ public class Card {
         return id;
     }
 
-    public Building getBuilding() {
+    public Building_Interface getBuilding() {
         return building;
     }
 
