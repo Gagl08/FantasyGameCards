@@ -9,15 +9,56 @@ package fr.bordeaux.depInfo.projetAO;
 /**
  * Building Class
  */
-public class Building {
+public class Building implements Building_Interface{
     // The name of the building.
     final String name;
     int nbHabAllowed;
     int nbWorkerNeeded;
-    Ressources resConso;
-    Ressources resProd;
+    StockageRessource resConstruct;
+    StockageRessource resConso;
+    StockageRessource resProd;
+    StockageCapacity capacity;
     boolean active;
     int timerBuild;
+
+////////////////////////////////////////////////////////
+/////////////////////CONSTRUCTORS///////////////////////
+    public Building(String name, int nbWorkerNeeded, int timerBuild) {
+        this.name = name;
+        this.nbHabAllowed = 0;
+        this.nbWorkerNeeded = nbWorkerNeeded;
+        this.active = false;
+        this.timerBuild = timerBuild;
+    }
+
+////////////////////////////////////////////////////////
+/////////////////////METHODS////////////////////////////
+    /**
+     * Checks if the building is functional, i.e if the player activated the card
+     * and if the building has enough workers to run it.
+     * @return True if the building is functional, false otherwise.
+     */
+    public boolean isFunctional() {
+        return this.active && this.nbWorkerNeeded == 0;
+    }
+
+    /**
+     * Produces resources for the given player hand (placeholder method, needs implementation).
+     *
+     * @param player The player hand for which resources are produced.
+     */
+    public void produceRessource(PlayerHand player) {
+        // Implementation for producing resources
+    }
+
+    /**
+     * Consumes resources from the given player hand (placeholder method, needs implementation).
+     *
+     * @param player The player hand from which resources are consumed.
+     */
+    public void consumeRessource(PlayerHand player) {
+        // Implementation for consuming resources
+    }
 
 //////////////////GETTERS and SETTERS///////////////////
     /**
@@ -66,21 +107,30 @@ public class Building {
     }
 
     /**
+     * Retrieves the capacity of the construction
+     *
+     * @return the capacity of the construction
+     */
+    public StockageCapacity getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * Retrieves the ressource consume at the construction
+     *
+     * @return The ressource use for the construction
+     */
+    public StockageRessource getResConstruct() {
+        return resConstruct;
+    }
+
+    /**
      * Retrieves the resources consumed by the building.
      *
      * @return The resources consumed.
      */
-    public Ressources getResConso() {
+    public StockageRessource getResConso() {
         return resConso;
-    }
-
-    /**
-     * Sets the resources consumed by the building.
-     *
-     * @param resConso The new resources consumed.
-     */
-    public void setResConso(Ressources resConso) {
-        this.resConso = resConso;
     }
 
     /**
@@ -88,17 +138,8 @@ public class Building {
      *
      * @return The resources produced.
      */
-    public Ressources getResProd() {
+    public StockageRessource getResProd() {
         return resProd;
-    }
-
-    /**
-     * Sets the resources produced by the building.
-     *
-     * @param resProd The new resources produced.
-     */
-    public void setResProd(Ressources resProd) {
-        this.resProd = resProd;
     }
 
     /**
@@ -137,42 +178,4 @@ public class Building {
         this.timerBuild = timerBuild;
     }
 
-////////////////////////////////////////////////////////
-/////////////////////CONSTRUCTORS///////////////////////
-    public Building(String name, int nbWorkerNeeded, int timerBuild) {
-        this.name = name;
-        this.nbHabAllowed = 0;
-        this.nbWorkerNeeded = nbWorkerNeeded;
-        this.active = false;
-        this.timerBuild = timerBuild;
-    }
-////////////////////////////////////////////////////////
-/////////////////////METHODS////////////////////////////
-    /**
-     * Checks if the building is functional, i.e if the player activated the card
-     * and if the building has enough workers to run it.
-     * @return True if the building is functional, false otherwise.
-     */
-    public boolean isFunctional() {
-        return this.active && this.nbWorkerNeeded == 0;
-    }
-
-    /**
-     * Produces resources for the given player hand (placeholder method, needs implementation).
-     *
-     * @param player The player hand for which resources are produced.
-     */
-    public void produceRessource(PlayerHand player) {
-        // Implementation for producing resources
-    }
-
-    /**
-     * Consumes resources from the given player hand (placeholder method, needs implementation).
-     *
-     * @param player The player hand from which resources are consumed.
-     */
-    public void consumeRessource(PlayerHand player) {
-        // Implementation for consuming resources
-    }
-////////////////////////////////////////////////////////
 }

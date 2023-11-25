@@ -4,15 +4,14 @@
  * Projet universitaire                         2023/2024
  */
 
-package fr.bordeaux.depInfo.projetAO.ressouce;
+package fr.bordeaux.depInfo.projetAO.capacity;
 
 /**
- * Object Food.
+ * Object Gold_capacity.
  */
+public class Habitant_capacity extends Capacity {
 
-public class Food extends Ressource {
-
-    public Food(int quantity) {
+    public Habitant_capacity(int quantity) {
         super(quantity);
     }
 }

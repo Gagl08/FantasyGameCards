@@ -7,12 +7,10 @@
 package fr.bordeaux.depInfo.projetAO.ressouce;
 
 /**
- * Object Food.
+ * Object Habitant.
  */
-
-public class Food extends Ressource {
-
-    public Food(int quantity) {
+public class Habitant extends Ressource{
+    public Habitant(int quantity) {
         super(quantity);
     }
 }

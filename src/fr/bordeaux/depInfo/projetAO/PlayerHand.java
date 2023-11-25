@@ -13,9 +13,9 @@ import java.util.ArrayList;
  */
 public class PlayerHand {
     //General Ressources use by the player
-    Stockage general_Ressources;
+    StockageRessource general_Ressources;
     //Carte playable of the player
-    ArrayList <Building> hand = new ArrayList<Building>();
+    ArrayList <Building> hand = new ArrayList<>();
 
     public void playCard(Card card, Board board){
         board.addCard(card);
@@ -25,5 +25,4 @@ public class PlayerHand {
             }
         }
     }
-
 }

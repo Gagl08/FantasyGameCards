@@ -16,7 +16,7 @@ public class Board {
     List<Card> cardsPlayed;
 
     public Board(){
-        this.cardsPlayed = new ArrayList<Card>();
+        this.cardsPlayed = new ArrayList<>();
     }
 
     public void addCard(Card card){
@@ -27,10 +27,10 @@ public class Board {
     }
 
     public void deactivateBuilding(int indexCard){
-        this.cardsPlayed.get(indexCard).setActive(false);
+       // this.cardsPlayed.get(indexCard).setActive(false);
     }
     public void activateBuilding(int indexCard){
-        this.cardsPlayed.get(indexCard).setActive(true);
+        //this.cardsPlayed.get(indexCard).setActive(true);
     }
 
 
