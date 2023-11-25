@@ -18,6 +18,10 @@ public class StockageCapacity {
 
     ArrayList<Capacity> list_capacity;
 
+    public StockageCapacity (){
+        this.list_capacity = new ArrayList<>();
+    }
+
     public StockageCapacity( ArrayList<Capacity> list_capacity){
         this.list_capacity = new ArrayList<>();
         this.list_capacity.addAll(list_capacity);

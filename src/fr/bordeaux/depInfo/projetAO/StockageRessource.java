@@ -17,6 +17,13 @@ public class StockageRessource {
 
     ArrayList<Ressource> list_ressource;
 
+    /**
+     *
+     */
+    public StockageRessource(){
+        this.list_ressource = new ArrayList<>();
+    }
+
     public StockageRessource(ArrayList<Ressource> list_ressource){
         this.list_ressource = new ArrayList<>();
         this.list_ressource.addAll(list_ressource);

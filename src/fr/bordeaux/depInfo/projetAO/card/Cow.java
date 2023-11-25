@@ -10,22 +10,19 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
-import fr.bordeaux.depInfo.projetAO.ressouce.Food;
-import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
-import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
-import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
+import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
 
-public class Farm extends Decorateur {
+public class Cow extends Decorateur {
 
-    public Farm(Building_Interface building_interface) {
+    public Cow(Building_Interface building_interface) {
         super(building_interface);
     }
 
     @Override
     public String getName() {
-        return super.getName()+"Farm";
+        return super.getName()+"Cow";
     }
 
     @Override
@@ -38,22 +35,24 @@ public class Farm extends Decorateur {
     @Override
     public StockageRessource getResConstruct() {
         Wood wood = new Wood(10);
+        Food food = new Food(20);
         Gold gold = new Gold(1);
         ArrayList<Ressource> list = new ArrayList<>();
         list.add(wood);
+        list.add(food);
         list.add(gold);
         super.getResConstruct().addRessource(list);
         return super.getResConstruct();
     }
 
     public StockageRessource getResProd(){
-        Food food = new Food(2);
+        Food food = new Food(5);
         super.getResProd().addRessource(food);
         return super.getResProd();
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(50);
+        Food_capacity food = new Food_capacity(25);
         super.getCapacity().addCapacity(food);
         return super.getCapacity();
     }
@@ -62,5 +61,10 @@ public class Farm extends Decorateur {
     public int getNbWorkerNeeded() {
         super.setNbWorkerNeeded(1);
         return super.getNbWorkerNeeded();
+    }
+
+    @Override
+    public int getTimerBuild() {
+        return super.getTimerBuild()+1;
     }
 }

@@ -29,6 +29,10 @@ public class Building implements Building_Interface{
         this.nbWorkerNeeded = 0;
         this.active = false;
         this.timerBuild = 0;
+        this.resConstruct = new StockageRessource();
+        this.resConso = new StockageRessource();
+        this.resProd = new StockageRessource();
+        this.capacity = new StockageCapacity();
     }
 
 ////////////////////////////////////////////////////////
