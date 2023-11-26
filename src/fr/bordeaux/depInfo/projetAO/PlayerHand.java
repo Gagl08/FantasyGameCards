@@ -18,11 +18,19 @@ public class PlayerHand {
     ArrayList <Card> hand = new ArrayList<>();
     TakeCard cardLoader = new TakeCard();
 
-
+    /**
+     * Fonction to Draw a Card
+     * @param turn actual
+     */
     public void draw(int turn){
         hand.add(cardLoader.takeCard(turn));
     }
 
+    /**
+     * put a Card of the hand of the player on the Board
+     * @param card to play
+     * @param board general
+     */
     public void playCard(Card card, Board board){
         for (int i = 0; i<hand.size();i++){
             if(hand.get(i).equals(card)){
@@ -32,6 +40,11 @@ public class PlayerHand {
         }
     }
 
+    /**
+     * Decrease the Ressources use on the construction of a building
+     * @param card card to play
+     * @param stockageRessource general to decrease
+     */
     public void constructCard(Card card, StockageRessource stockageRessource){
         ArrayList<Ressource> ressourcesCard;
         ArrayList<Ressource> ressourcesStockage;
@@ -49,6 +62,13 @@ public class PlayerHand {
         stockageRessource.setList_ressource(ressourcesStockage);
     }
 
+    /**
+     * Check if the player can play a card.
+     * Verifing the ressource of the player are anougth
+     * @param card to check
+     * @param stockageRessource general
+     * @return true if is possible false else
+     */
     public boolean canPlay(Card card, StockageRessource stockageRessource){
         ArrayList<Ressource> ressourcesCard;
         ArrayList<Ressource> ressourcesStockage;

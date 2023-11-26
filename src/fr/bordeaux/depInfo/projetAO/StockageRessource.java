@@ -18,7 +18,7 @@ public class StockageRessource {
     ArrayList<Ressource> list_ressource;
 
     /**
-     *
+     * Constructor
      */
     public StockageRessource(){
         this.list_ressource = new ArrayList<>();

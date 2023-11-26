@@ -8,6 +8,7 @@ package fr.bordeaux.depInfo.projetAO;
 
 /**
  * Building Class
+ * Building compose a Card
  */
 public class Building implements Building_Interface{
     // The name of the building.
