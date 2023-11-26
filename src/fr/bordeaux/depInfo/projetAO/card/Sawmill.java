@@ -10,7 +10,6 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
-import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.capacity.Lumber_capacity;
 import fr.bordeaux.depInfo.projetAO.capacity.Wood_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;

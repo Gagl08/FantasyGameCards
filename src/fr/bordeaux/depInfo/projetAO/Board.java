@@ -67,7 +67,6 @@ public class Board {
             case 4:
                 revolution();
                 break;
-
         }
     }
     void witchHunt(){}

@@ -6,9 +6,11 @@
 
 package main;
 
+import fr.bordeaux.depInfo.projetAO.Turn;
+
 public class Main {
     public static void main(String[] args) {
-
-
+        Turn turn = new Turn();
+        turn.lunchGamme();
     }
 }

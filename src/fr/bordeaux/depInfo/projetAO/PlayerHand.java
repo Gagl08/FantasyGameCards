@@ -15,14 +15,22 @@ public class PlayerHand {
     //General Ressources use by the player
     StockageRessource general_Ressources;
     //Carte playable of the player
-    ArrayList <Building> hand = new ArrayList<>();
+    ArrayList <Card> hand = new ArrayList<>();
+    TakeCard cardLoader = new TakeCard();
+
+
+    public void draw(int turn){
+        hand.add(cardLoader.takeCard(turn));
+    }
 
     public void playCard(Card card, Board board){
-        board.addCard(card);
         for (int i = 0; i<hand.size();i++){
             if(hand.get(i).equals(card)){
+                board.addCard(card);
                 hand.remove(i);
             }
         }
     }
+
+
 }
