@@ -2,9 +2,11 @@ package fr.bordeaux.depInfo.projetAO.ressouce;
 
 public class Ressource {
     int quantity;
+    String name;
 
     public Ressource(int quantity){
         this.quantity=quantity;
+        this.name="";
     }
 
     /**
@@ -12,6 +14,13 @@ public class Ressource {
      */
     public int getQuantity() {
         return quantity;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
     }
 
     /**

@@ -14,5 +14,6 @@ public class Defence extends Ressource{
 
     public Defence(int quantity) {
         super(quantity);
+        this.name = "Defence";
     }
 }

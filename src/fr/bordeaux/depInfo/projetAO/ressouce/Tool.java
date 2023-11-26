@@ -14,5 +14,6 @@ public class Tool extends Ressource {
 
     public Tool(int quantity) {
         super(quantity);
+        this.name = "Tools";
     }
 }

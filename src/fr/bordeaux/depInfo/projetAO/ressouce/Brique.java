@@ -14,5 +14,6 @@ public class Brique extends Ressource {
 
     public Brique(int quantity) {
         super(quantity);
+        this.name = "Brique";
     }
 }

@@ -14,5 +14,6 @@ public class Lumber extends Ressource {
 
     public Lumber(int quantity) {
         super(quantity);
+        this.name = "Lumber";
     }
 }

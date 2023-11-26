@@ -9,14 +9,9 @@ package fr.bordeaux.depInfo.projetAO.card;
 import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
-import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.capacity.Wood_capacity;
-import fr.bordeaux.depInfo.projetAO.ressouce.Food;
 import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
-import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
-
-import java.util.ArrayList;
 
 public class Forest extends Decorateur {
 
@@ -39,6 +34,13 @@ public class Forest extends Decorateur {
         Wood_capacity food = new Wood_capacity(50);
         super.getCapacity().addCapacity(food);
         return super.getCapacity();
+    }
+
+    @Override
+    public StockageRessource getResConstruct() {
+        Gold gold = new Gold(1);
+        super.getResConstruct().addRessource(gold);
+        return super.getResConstruct();
     }
 
     @Override

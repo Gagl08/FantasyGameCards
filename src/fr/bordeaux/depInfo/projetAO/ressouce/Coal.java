@@ -14,5 +14,6 @@ public class Coal extends Ressource {
 
     public Coal(int quantity) {
         super(quantity);
+        this.name = "Coal";
     }
 }

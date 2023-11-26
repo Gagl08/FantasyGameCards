@@ -14,5 +14,6 @@ public class Weapon extends Ressource {
 
     public Weapon(int quantity) {
         super(quantity);
+        this.name = "Weapon";
     }
 }

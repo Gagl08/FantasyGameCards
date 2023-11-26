@@ -14,5 +14,6 @@ public class Food extends Ressource {
 
     public Food(int quantity) {
         super(quantity);
+        this.name = "Food";
     }
 }

@@ -51,4 +51,8 @@ public class StockageRessource {
     public ArrayList<Ressource> getList_ressource() {
         return list_ressource;
     }
+
+    public void setList_ressource(ArrayList<Ressource> list_ressource) {
+        this.list_ressource=list_ressource;
+    }
 }

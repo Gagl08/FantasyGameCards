@@ -13,5 +13,6 @@ public class Gold extends Ressource{
 
     public Gold(int quantity) {
         super(quantity);
+        this.name = "Gold";
     }
 }

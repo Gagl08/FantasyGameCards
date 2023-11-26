@@ -12,5 +12,6 @@ package fr.bordeaux.depInfo.projetAO.ressouce;
 public class Habitant extends Ressource{
     public Habitant(int quantity) {
         super(quantity);
+        this.name = "Habitant";
     }
 }
