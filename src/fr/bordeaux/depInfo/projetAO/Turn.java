@@ -98,17 +98,17 @@ public class Turn {
             System.out.println("Ressource : ");
             for (int i = 0; i < stockageRessource.list_ressource.size();i++ ) {
                 System.out.print(stockageRessource.list_ressource.get(i).getName()+ " : ");
-                System.out.println(stockageRessource.list_ressource.get(i).getQuantity());
+                System.out.print(stockageRessource.list_ressource.get(i).getQuantity()+ ", ");
             }
 
             //BOARD
-            System.out.println("Board : ");
+            System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
-                System.out.println(board.cardsPlayed.get(i).getBuilding().getName());
+                System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
             }
 
             //HAND
-            System.out.println("Hand : ");
+            System.out.println("\nHand : ");
             for(int i = 0; i<playerHand.hand.size();i++){
                 System.out.println(i + " to play " + playerHand.hand.get(i).getBuilding().getName());
             }
