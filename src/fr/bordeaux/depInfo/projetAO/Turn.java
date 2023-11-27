@@ -132,8 +132,8 @@ public class Turn {
                 choix=Integer.parseInt(choixMenu);
                 if (choix<playerHand.hand.size()) {
                     if(playerHand.canPlay(playerHand.hand.get(choix),stockageRessource)){
-                        playerHand.playCard(playerHand.hand.get(choix), board);
                         playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
+                        playerHand.playCard(playerHand.hand.get(choix), board);
                     }else {
                         System.out.println("To expensive ! ");
                     }

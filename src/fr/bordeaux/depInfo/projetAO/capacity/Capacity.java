@@ -2,8 +2,17 @@ package fr.bordeaux.depInfo.projetAO.capacity;
 
 public class Capacity {
     int quantity;
+    String name;
     public Capacity(int quantity){
         this.quantity=quantity;
+        this.name="";
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
