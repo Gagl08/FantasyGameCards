@@ -13,11 +13,26 @@ import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Cow extends Decorateur {
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
 
     public Cow(Building_Interface building_interface) {
         super(building_interface);
+        Gold gold = new Gold(1);
+        this.getRessourceConsome.addRessource(gold);
+        Wood wood = new Wood(10);
+        Food food = new Food(20);
+        HashMap<String,Ressource> list = new HashMap<>();
+        list.put(wood.getName(),wood);
+        list.put(food.getName(),food);
+        list.put(gold.getName(),gold);
+        this.getRessourceConstruct.addRessource(list);
+        food = new Food(5);
+        this.getRessourceProduct.addRessource(food);
     }
 
     @Override
@@ -27,28 +42,16 @@ public class Cow extends Decorateur {
 
     @Override
     public StockageRessource getResConso() {
-        Gold gold = new Gold(1);
-        super.getResConso().addRessource(gold);
-        return super.getResConso();
+        return getRessourceConsome;
     }
 
     @Override
     public StockageRessource getResConstruct() {
-        Wood wood = new Wood(10);
-        Food food = new Food(20);
-        Gold gold = new Gold(1);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(food);
-        list.add(gold);
-        super.getResConstruct().addRessource(list);
-        return super.getResConstruct();
+        return getRessourceConstruct;
     }
 
     public StockageRessource getResProd(){
-        Food food = new Food(5);
-        super.getResProd().addRessource(food);
-        return super.getResProd();
+        return getRessourceProduct;
     }
 
     public StockageCapacity getCapacity(){

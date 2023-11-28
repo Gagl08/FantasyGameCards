@@ -16,11 +16,30 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Farm extends Decorateur {
 
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
+
     public Farm(Building_Interface building_interface) {
         super(building_interface);
+        Gold gold = new Gold(1);
+        this.getRessourceConsome.addRessource(gold);
+        Wood wood = new Wood(10);
+        HashMap<String,Ressource> list = new HashMap<>();
+        list.put(wood.getName(), wood);
+        list.put(gold.getName(),gold);
+        this.getRessourceConstruct.addRessource(list);
+        Food food = new Food(2);
+        this.getRessourceProduct.addRessource(food);
+
+        Food_capacity food_capacity = new Food_capacity(50);
+        this.getCapacity.addCapacity(food_capacity);
     }
 
     @Override
@@ -30,32 +49,21 @@ public class Farm extends Decorateur {
 
     @Override
     public StockageRessource getResConso() {
-        Gold gold = new Gold(1);
-        super.getResConso().addRessource(gold);
-        return super.getResConso();
+        return getRessourceConsome;
     }
 
     @Override
     public StockageRessource getResConstruct() {
-        Wood wood = new Wood(10);
-        Gold gold = new Gold(1);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(gold);
-        super.getResConstruct().addRessource(list);
-        return super.getResConstruct();
+        return getRessourceConstruct;
     }
 
     public StockageRessource getResProd(){
-        Food food = new Food(2);
-        super.getResProd().addRessource(food);
-        return super.getResProd();
+        return getRessourceProduct;
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(50);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+
+        return getCapacity;
     }
 
     @Override

@@ -15,6 +15,7 @@ import fr.bordeaux.depInfo.projetAO.capacity.Wood_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Sawmill extends Decorateur {
 
@@ -60,9 +61,9 @@ public class Sawmill extends Decorateur {
     public StockageCapacity getCapacity(){
         Wood_capacity wood_capacity = new Wood_capacity(100);
         Lumber_capacity lumber_capacity = new Lumber_capacity(100);
-        ArrayList<Capacity> arrayList = new ArrayList<>();
-        arrayList.add(wood_capacity);
-        arrayList.add(lumber_capacity);
+        HashMap<String,Capacity> arrayList = new HashMap<>();
+        arrayList.put(wood_capacity.getName(), wood_capacity);
+        arrayList.put(lumber_capacity.getName(), lumber_capacity);
         super.getCapacity().addCapacity(arrayList);
         return super.getCapacity();
     }

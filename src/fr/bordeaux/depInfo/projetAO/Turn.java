@@ -111,6 +111,7 @@ public class Turn {
             System.out.println("\nHand : ");
             for(int i = 0; i<playerHand.hand.size();i++){
                 System.out.println(i + " to play " + playerHand.hand.get(i).getBuilding().getName());
+                System.out.println(playerHand.hand.get(i).getBuilding().getResConso().list_ressource);
             }
 
             //Get the instruction of the player

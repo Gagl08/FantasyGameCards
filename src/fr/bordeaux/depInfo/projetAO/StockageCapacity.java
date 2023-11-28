@@ -7,30 +7,29 @@
 package fr.bordeaux.depInfo.projetAO;
 
 import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
-import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Object Stockage. Il contient toutes les ressources du jeu ainsi que les capacité de stockage de celles-ci
  */
 public class StockageCapacity {
 
-    ArrayList<Capacity> list_capacity;
+    HashMap<String, Capacity> list_capacity;
 
     public StockageCapacity (){
-        this.list_capacity = new ArrayList<>();
+        this.list_capacity = new HashMap<>();
     }
 
-    public StockageCapacity( ArrayList<Capacity> list_capacity){
-        this.list_capacity = new ArrayList<>();
-        this.list_capacity.addAll(list_capacity);
+    public StockageCapacity( HashMap<String,Capacity> list_capacity){
+        this.list_capacity = new HashMap<>();
+        this.list_capacity.putAll(list_capacity);
     }
 
     /**
      * @return actual number of food
      */
-    public ArrayList<Capacity> getList_capacity() {
+    public HashMap<String,Capacity> getList_capacity() {
         return list_capacity;
     }
 
@@ -38,8 +37,8 @@ public class StockageCapacity {
      * Add a liste of Capacity to list Capacity
      * @param capacity list to add
      */
-    public void addCapacity(ArrayList<Capacity> capacity) {
-        this.list_capacity.addAll(capacity);
+    public void addCapacity(HashMap<String,Capacity> capacity) {
+        this.list_capacity.putAll(capacity);
     }
 
     /**
@@ -47,6 +46,6 @@ public class StockageCapacity {
      * @param capacity to add
      */
     public void addCapacity(Capacity capacity) {
-        this.list_capacity.add(capacity);
+        this.list_capacity.put(capacity.getName(), capacity);
     }
 }

@@ -10,7 +10,7 @@ package fr.bordeaux.depInfo.projetAO;
  * Building Class
  * Building compose a Card
  */
-public class Building implements Building_Interface{
+public class Building implements Building_Interface,ComposantCard{
     // The name of the building.
     final String name;
     int nbHabAllowed;
