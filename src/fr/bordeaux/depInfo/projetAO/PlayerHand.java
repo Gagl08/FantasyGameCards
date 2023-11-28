@@ -79,7 +79,7 @@ public class PlayerHand {
         for (Ressource ressource : ressourcesStockage) {
             for (Ressource value : ressourcesCard) {
                 if (value.getName().equals(ressource.getName())) {
-                    if (! (value.getQuantity() < ressource.getQuantity())){
+                    if (! (value.getQuantity() <= ressource.getQuantity())){
                         return false;
                     }
                 }

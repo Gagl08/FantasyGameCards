@@ -30,11 +30,11 @@ public class TakeCard {
         Building_Interface sheep = new Cow(building);
 
         list.add(farm);
-        list.add(forest);
-        list.add(farmhouse);
-        list.add(lumberjack);
-        list.add(cow);
-        list.add(sheep);
+        //list.add(forest);
+        //list.add(farmhouse);
+        //list.add(lumberjack);
+        //list.add(cow);
+        //list.add(sheep);
 
         //Late Card
         if (turn > 5) {
