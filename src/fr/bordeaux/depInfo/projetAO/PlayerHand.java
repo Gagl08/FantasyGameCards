@@ -9,6 +9,7 @@ package fr.bordeaux.depInfo.projetAO;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Player Hand
@@ -46,22 +47,17 @@ public class PlayerHand {
      * @param stockageRessource general to decrease
      */
     public void constructCard(Card card, StockageRessource stockageRessource){
-        ArrayList<Ressource> ressourcesCard;
-        ArrayList<Ressource> ressourcesStockage;
+        System.out.println("calling contructCard");
+        HashMap<String, Ressource> ressourcesCard;
+        HashMap<String, Ressource> ressourcesStockage;
 
         ressourcesCard = card.getBuilding().getResConstruct().list_ressource;
         ressourcesStockage = stockageRessource.list_ressource;
 
-        int debug_cpt = 0;
 
-        for (Ressource value : ressourcesCard) {
-            for (Ressource ressource : ressourcesStockage) {
-                if (value.getName().equals(ressource.getName())) {
-                    debug_cpt ++;
-                    System.out.println("Calling lessQuantity method, ressourcesCard value : " + value.getName() + ", ressourseStockage name : " + ressource.getName() + ", debug_cpt :" + debug_cpt);
-                    ressource.lessQuantity(value.getQuantity());
-                }
-            }
+        for (String key : ressourcesCard.keySet()) {
+            System.out.println("Calling lessQuantity method, ressourcesCard value : " + ressourcesCard.get(key).getName() + ", ressourseStockage name : " + ressourcesStockage.get(key).getName());
+            ressourcesStockage.get(key).lessQuantity(ressourcesCard.get(key).getQuantity());
         }
         stockageRessource.setList_ressource(ressourcesStockage);
     }
@@ -74,12 +70,18 @@ public class PlayerHand {
      * @return true if is possible false else
      */
     public boolean canPlay(Card card, StockageRessource stockageRessource){
-        ArrayList<Ressource> ressourcesCard;
-        ArrayList<Ressource> ressourcesStockage;
+        HashMap<String, Ressource> ressourcesCard;
+        HashMap<String, Ressource> ressourcesStockage;
 
         ressourcesCard = card.getBuilding().getResConstruct().list_ressource;
         ressourcesStockage = stockageRessource.list_ressource;
 
+
+        for (String key : ressourcesCard.keySet()) {
+            if (! (ressourcesCard.get(key).getQuantity() <= ressourcesStockage.get(key).getQuantity())) return false;
+        }
+
+        /*
         for (Ressource ressource : ressourcesStockage) {
             for (Ressource value : ressourcesCard) {
                 if (value.getName().equals(ressource.getName())) {
@@ -89,6 +91,7 @@ public class PlayerHand {
                 }
             }
         }
+        */
         return true;
     }
 }

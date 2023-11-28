@@ -10,6 +10,10 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.PlayerHand;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
+import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Decorateur implements Building_Interface {
     private final Building_Interface building_interface;
@@ -47,6 +51,8 @@ public class Decorateur implements Building_Interface {
     public StockageRessource getResConstruct() {
         return this.building_interface.getResConstruct();
     }
+
+
 
     @Override
     public StockageRessource getResConso() {

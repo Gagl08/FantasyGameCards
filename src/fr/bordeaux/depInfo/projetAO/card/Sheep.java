@@ -13,6 +13,7 @@ import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Sheep extends Decorateur {
 
@@ -37,10 +38,10 @@ public class Sheep extends Decorateur {
         Wood wood = new Wood(10);
         Food food = new Food(10);
         Gold gold = new Gold(1);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(food);
-        list.add(gold);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put("Wood", new Ressource(10));
+        list.put("Stone", new Ressource(10));
+        list.put("Gold", new Ressource(1));
         super.getResConstruct().addRessource(list);
         return super.getResConstruct();
     }

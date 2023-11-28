@@ -6,6 +6,10 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
+
+import java.util.ArrayList;
+
 /**
  * Interface of Buildind to create the Decorator on a Building
  */
@@ -17,6 +21,7 @@ public interface Building_Interface {
     void setNbWorkerNeeded(int nbWorkerNeeded);
     StockageRessource getResConstruct();
     StockageRessource getResConso();
+
     StockageRessource getResProd();
     StockageCapacity getCapacity();
     boolean isActive();

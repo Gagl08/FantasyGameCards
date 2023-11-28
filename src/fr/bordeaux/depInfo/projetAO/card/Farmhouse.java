@@ -16,6 +16,7 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Farmhouse extends Decorateur {
 
@@ -32,9 +33,9 @@ public class Farmhouse extends Decorateur {
     public StockageRessource getResConso() {
         Gold gold = new Gold(1);
         Wood wood = new Wood(10);
-        ArrayList<Ressource> arrayList = new ArrayList<>();
-        arrayList.add(gold);
-        arrayList.add(wood);
+        HashMap<String,Ressource> arrayList = new HashMap<String,Ressource>();
+        arrayList.put("Gold",new Ressource(1));
+        arrayList.put("Wood", new Ressource(10));
         super.getResConso().addRessource(arrayList);
         return super.getResConso();
     }
@@ -43,10 +44,10 @@ public class Farmhouse extends Decorateur {
     public StockageRessource getResConstruct() {
         Wood wood = new Wood(10);
         Gold gold = new Gold(10);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(gold);
-        super.getResConstruct().addRessource(list);
+        HashMap<String,Ressource> arrayList = new HashMap<String,Ressource>();
+        arrayList.put("Gold",new Ressource(10));
+        arrayList.put("Wood", new Ressource(10));
+        super.getResConstruct().addRessource(arrayList);
         return super.getResConstruct();
     }
 

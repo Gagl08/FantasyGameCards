@@ -13,6 +13,7 @@ import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Windmill extends Decorateur {
 
@@ -29,10 +30,10 @@ public class Windmill extends Decorateur {
     public StockageRessource getResConso() {
         Gold gold = new Gold(2);
         Wood wood = new Wood(5);
-        ArrayList<Ressource> arrayList = new ArrayList<>();
-        arrayList.add(gold);
-        arrayList.add(wood);
-        super.getResConso().addRessource(arrayList);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put("Wood", new Ressource(2));
+        list.put("Gold", new Ressource(5));
+        super.getResConstruct().addRessource(list);
         return super.getResConso();
     }
 
@@ -41,10 +42,10 @@ public class Windmill extends Decorateur {
         Wood wood = new Wood(40);
         Stone stone = new Stone(20);
         Gold gold = new Gold(20);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(stone);
-        list.add(gold);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put("Wood", new Ressource(40));
+        list.put("Stone", new Ressource(20));
+        list.put("Gold", new Ressource(20));
         super.getResConstruct().addRessource(list);
         return super.getResConstruct();
     }

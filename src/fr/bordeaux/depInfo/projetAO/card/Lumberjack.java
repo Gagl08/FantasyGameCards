@@ -14,6 +14,7 @@ import fr.bordeaux.depInfo.projetAO.capacity.Wood_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Lumberjack extends Decorateur {
 
@@ -26,26 +27,17 @@ public class Lumberjack extends Decorateur {
         return super.getName()+"Lumberjack";
     }
 
-    @Override
-    public StockageRessource getResConso() {
-        Gold gold = new Gold(1);
-        Food food = new Food(10);
-        ArrayList<Ressource> arrayList = new ArrayList<>();
-        arrayList.add(gold);
-        arrayList.add(food);
-        super.getResConso().addRessource(arrayList);
-        return super.getResConso();
-    }
+
 
     @Override
     public StockageRessource getResConstruct() {
         Wood wood = new Wood(10);
         Stone stone = new Stone(10);
         Gold gold = new Gold(10);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(stone);
-        list.add(gold);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put("Wood", new Ressource(10));
+        list.put("Stone", new Ressource(10));
+        list.put("Gold", new Ressource(10));
         super.getResConstruct().addRessource(list);
         return super.getResConstruct();
     }

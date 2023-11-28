@@ -28,27 +28,18 @@ public class Sawmill extends Decorateur {
         return super.getName()+"Sawmill";
     }
 
-    @Override
-    public StockageRessource getResConso() {
-        Gold gold = new Gold(2);
-        Wood wood = new Wood(5);
-        ArrayList<Ressource> arrayList = new ArrayList<>();
-        arrayList.add(gold);
-        arrayList.add(wood);
-        super.getResConso().addRessource(arrayList);
-        return super.getResConso();
-    }
+
 
     @Override
     public StockageRessource getResConstruct() {
         Wood wood = new Wood(40);
         Stone stone = new Stone(20);
         Gold gold = new Gold(20);
-        ArrayList<Ressource> list = new ArrayList<>();
-        list.add(wood);
-        list.add(stone);
-        list.add(gold);
-        super.getResConstruct().addRessource(list);
+        HashMap<String,Ressource> arrayList = new HashMap<>();
+        arrayList.put("Gold", new Ressource(20));
+        arrayList.put("Wood", new Ressource(40));
+        arrayList.put("Stone", new Ressource(20));
+        super.getResConstruct().addRessource(arrayList);
         return super.getResConstruct();
     }
 

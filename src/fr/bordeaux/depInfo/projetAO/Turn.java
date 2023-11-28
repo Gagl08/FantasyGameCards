@@ -9,6 +9,7 @@ package fr.bordeaux.depInfo.projetAO;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -44,7 +45,20 @@ public class Turn {
     public StockageRessource createStockageRessource(){
         StockageRessource stockageRessource = new StockageRessource();
 
-        ArrayList<Ressource> arrayList = new ArrayList<>();
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put("Food", new Ressource(20));
+        list.put("Wood", new Ressource(15));
+        list.put("Stone", new Ressource(5));
+        list.put("Coal", new Ressource(0));
+        list.put("Iron", new Ressource(0));
+        list.put("Gold", new Ressource(10));
+        list.put("Brique", new Ressource(0));
+        list.put("Lumber", new Ressource(0));
+        list.put("Habitant", new Ressource(5));
+        list.put("Weapon", new Ressource(0));
+        list.put("Tool", new Ressource(0));
+        list.put("Defence", new Ressource(0));
+
         Food food = new Food(20);
         Wood wood = new Wood(15);
         Stone stone = new Stone(5);
@@ -58,20 +72,7 @@ public class Turn {
         Tool tool = new Tool(0);
         Defence defence = new Defence(0);
 
-        arrayList.add(food);
-        arrayList.add(wood);
-        arrayList.add(stone);
-        arrayList.add(coal);
-        arrayList.add(iron);
-        arrayList.add(gold);
-        arrayList.add(brique);
-        arrayList.add(lumber);
-        arrayList.add(habitant);
-        arrayList.add(weapon);
-        arrayList.add(tool);
-        arrayList.add(defence);
-
-        stockageRessource.addRessource(arrayList);
+        stockageRessource.addRessource(list);
         return stockageRessource;
     }
 
@@ -96,9 +97,9 @@ public class Turn {
 
             //Ressources
             System.out.println("Ressource : ");
-            for (int i = 0; i < stockageRessource.list_ressource.size();i++ ) {
-                System.out.print(stockageRessource.list_ressource.get(i).getName()+ " : ");
-                System.out.print(stockageRessource.list_ressource.get(i).getQuantity()+ ", ");
+            for (String key : stockageRessource.list_ressource.keySet()) {
+                System.out.print(key + " : ");
+                System.out.print(stockageRessource.list_ressource.get(key).getQuantity()+ ", ");
             }
 
             //BOARD
@@ -111,7 +112,6 @@ public class Turn {
             System.out.println("\nHand : ");
             for(int i = 0; i<playerHand.hand.size();i++){
                 System.out.println(i + " to play " + playerHand.hand.get(i).getBuilding().getName());
-                System.out.println(playerHand.hand.get(i).getBuilding().getResConso().list_ressource);
             }
 
             //Get the instruction of the player

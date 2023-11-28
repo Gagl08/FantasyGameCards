@@ -37,9 +37,9 @@ public class TestStockage {
         ArrayList<Capacity> test2 = new ArrayList<>();
         test2.add(gold_capacity);
         test2.add(food_capacity);
-
-        stocktest = new StockageRessource(test);
-        stocktest2 = new StockageCapacity(test2);
+/*
+        //stocktest = new StockageRessource(test);
+        //stocktest2 = new StockageCapacity(test2);
 
 
         System.out.println(stocktest.getList_ressource());
@@ -51,6 +51,6 @@ public class TestStockage {
 
         System.out.println(stocktest.getList_ressource());
 
-
+*/
     }
 }
