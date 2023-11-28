@@ -52,9 +52,13 @@ public class PlayerHand {
         ressourcesCard = card.getBuilding().getResConstruct().list_ressource;
         ressourcesStockage = stockageRessource.list_ressource;
 
+        int debug_cpt = 0;
+
         for (Ressource value : ressourcesCard) {
             for (Ressource ressource : ressourcesStockage) {
                 if (value.getName().equals(ressource.getName())) {
+                    debug_cpt ++;
+                    System.out.println("Calling lessQuantity method, ressourcesCard value : " + value.getName() + ", ressourseStockage name : " + ressource.getName() + ", debug_cpt :" + debug_cpt);
                     ressource.lessQuantity(value.getQuantity());
                 }
             }
