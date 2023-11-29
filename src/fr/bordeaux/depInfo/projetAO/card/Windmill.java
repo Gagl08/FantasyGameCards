@@ -12,13 +12,36 @@ import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Windmill extends Decorateur {
 
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
     public Windmill(Building_Interface building_interface) {
         super(building_interface);
+
+        Gold gold = new Gold(2);
+        Wood wood = new Wood(5);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put(gold.getName(),gold);
+        list.put(wood.getName(), wood);
+        getRessourceConsome.addRessource(list);
+
+        wood = new Wood(40);
+        Stone stone = new Stone(20);
+        gold = new Gold(20);
+        HashMap<String, Ressource> list2 = new HashMap<>();
+        list2.put(gold.getName(), gold);
+        list2.put(stone.getName(), stone);
+        list2.put(wood.getName(), wood);
+        getRessourceConstruct.addRessource(list2);
+
+        Food food = new Food(10);
+        getRessourceProduct.addRessource(food);
     }
 
     @Override
@@ -28,32 +51,16 @@ public class Windmill extends Decorateur {
 
     @Override
     public StockageRessource getResConso() {
-        Gold gold = new Gold(2);
-        Wood wood = new Wood(5);
-        HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Wood", new Ressource(2));
-        list.put("Gold", new Ressource(5));
-        super.getResConstruct().addRessource(list);
-        return super.getResConso();
+        return getRessourceConsome;
     }
 
     @Override
     public StockageRessource getResConstruct() {
-        Wood wood = new Wood(40);
-        Stone stone = new Stone(20);
-        Gold gold = new Gold(20);
-        HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Wood", new Ressource(40));
-        list.put("Stone", new Ressource(20));
-        list.put("Gold", new Ressource(20));
-        super.getResConstruct().addRessource(list);
-        return super.getResConstruct();
+        return getRessourceConstruct;
     }
 
     public StockageRessource getResProd(){
-        Food food = new Food(10);
-        super.getResProd().addRessource(food);
-        return super.getResProd();
+        return getRessourceProduct;
     }
 
     public StockageCapacity getCapacity(){

@@ -36,10 +36,6 @@ public class Forest extends Decorateur {
         return super.getName()+"Forest";
     }
 
-    public StockageRessource getGetResCons(){
-        return getRessourceConsome;
-    }
-
     @Override
     public StockageRessource getResConso() {
         return getRessourceConsome;

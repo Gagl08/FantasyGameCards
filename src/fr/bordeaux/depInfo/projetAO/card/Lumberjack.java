@@ -18,34 +18,46 @@ import java.util.HashMap;
 
 public class Lumberjack extends Decorateur {
 
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
     public Lumberjack(Building_Interface building_interface) {
         super(building_interface);
+
+        Gold gold = new Gold(1);
+        this.getRessourceConsome.addRessource(gold);
+
+        Wood wood = new Wood(10);
+        Stone stone = new Stone(10);
+        gold = new Gold(10);
+        HashMap<String, Ressource> list = new HashMap<>();
+        list.put(wood.getName(), wood);
+        list.put(stone.getName(), stone);
+        list.put(gold.getName(), gold);
+        getRessourceConstruct.addRessource(list);
+
+        wood = new Wood(5);
+        getRessourceProduct.addRessource(wood);
+    }
+
+    public String getName() {
+        return super.getName()+"Lumbejack";
     }
 
     @Override
-    public String getName() {
-        return super.getName()+"Lumberjack";
+    public StockageRessource getResConso() {
+        return getRessourceConsome;
     }
-
-
 
     @Override
     public StockageRessource getResConstruct() {
-        Wood wood = new Wood(10);
-        Stone stone = new Stone(10);
-        Gold gold = new Gold(10);
-        HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Wood", new Ressource(10));
-        list.put("Stone", new Ressource(10));
-        list.put("Gold", new Ressource(10));
-        super.getResConstruct().addRessource(list);
-        return super.getResConstruct();
+        return getRessourceConstruct;
     }
 
     public StockageRessource getResProd(){
-        Wood wood = new Wood(5);
-        super.getResProd().addRessource(wood);
-        return super.getResProd();
+        return getRessourceProduct;
     }
 
     public StockageCapacity getCapacity(){

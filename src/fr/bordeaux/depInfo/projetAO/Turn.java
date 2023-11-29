@@ -24,6 +24,7 @@ public class Turn {
      */
     public void lunchGamme (){
         int turn=1;
+        int iturn;
 
         PlayerHand playerHand = new PlayerHand();
         Board board = new Board();
@@ -35,7 +36,8 @@ public class Turn {
             playerHand.draw(turn);
         }
         stockageRessource=createStockageRessource();
-        gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+        iturn = gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+        System.out.println("You have play " + iturn + "turn's");
     }
 
     /**
@@ -72,14 +74,13 @@ public class Turn {
      * @param stockageRessource Global Ressources of the player
      * @param stockageCapacity Capacity max of the ressources of the player
      */
-    public void gamme (Board board, PlayerHand playerHand, int turn, StockageRessource stockageRessource, StockageCapacity stockageCapacity){
-        boolean arret=false;
+    public int gamme (Board board, PlayerHand playerHand, int turn, StockageRessource stockageRessource, StockageCapacity stockageCapacity){
         Scanner entree=new Scanner(System.in);
         String choixMenu;
         int choix;
 
         //Start the IHM
-        while (!arret){
+        while (true){
             System.out.println(turn);
 
             //Ressources
@@ -102,7 +103,6 @@ public class Turn {
             }
 
             //Get the instruction of the player
-
             choixMenu=entree.nextLine();
 
             //Pass turn
@@ -113,17 +113,14 @@ public class Turn {
                     board.consumeRessources(stockageRessource);
                 }catch (RessourceException e){
                     System.out.println(e.getName());
-                    arret = true;
+                    return 0;
                 }
-                if (!arret){
-                    board.gatherRessources(stockageRessource);
-                    gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
-                }
+                board.gatherRessources(stockageRessource);
+                return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
             //Stop the game
             }else if(Objects.equals(choixMenu,"ff")) {
-                arret = true;
-
+                return 0;
             //Play a card
             }else {
                 choix=Integer.parseInt(choixMenu);
