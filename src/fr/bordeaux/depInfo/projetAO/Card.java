@@ -38,11 +38,4 @@ public class Card {
         return building;
     }
 
-    /**
-     * TODO peut etre virer ca
-     * @param building
-     */
-    public void setBuilding(Building building) {
-        this.building = building;
-    }
 }

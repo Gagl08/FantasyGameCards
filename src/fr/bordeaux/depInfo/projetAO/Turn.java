@@ -17,6 +17,12 @@ import java.util.Scanner;
  * Class to create an genere a game
  */
 public class Turn {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+
 
     /**
      * Use the first when you create the game
@@ -48,12 +54,12 @@ public class Turn {
         StockageRessource stockageRessource = new StockageRessource();
 
         HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Food", new Ressource(20));
-        list.put("Wood", new Ressource(15));
-        list.put("Stone", new Ressource(5));
+        list.put("Food", new Ressource(25));
+        list.put("Wood", new Ressource(25));
+        list.put("Stone", new Ressource(15));
         list.put("Coal", new Ressource(0));
         list.put("Iron", new Ressource(0));
-        list.put("Gold", new Ressource(10));
+        list.put("Gold", new Ressource(20));
         list.put("Brique", new Ressource(0));
         list.put("Lumber", new Ressource(0));
         list.put("Habitant", new Ressource(5));
@@ -99,24 +105,31 @@ public class Turn {
             //HAND
             System.out.println("\nHand : ");
             for(int i = 0; i<playerHand.hand.size();i++){
-                System.out.println(i + " to play " + playerHand.hand.get(i).getBuilding().getName());
+                System.out.print("\n"+i + " to play " + playerHand.hand.get(i).getBuilding().getName()+"; ");
+                System.out.print(ANSI_PURPLE +" --> Cost : "+ ANSI_RESET);
+                for (String key : playerHand.hand.get(i).building.getResConstruct().list_ressource.keySet()){
+                    System.out.print(ANSI_PURPLE + playerHand.hand.get(i).getBuilding().getResConstruct().list_ressource.get(key).getName() + " : " );
+                    System.out.print(playerHand.hand.get(i).getBuilding().getResConstruct().list_ressource.get(key).getQuantity()+ ", "+ANSI_RESET);
+                }
+                System.out.print(ANSI_GREEN +" --> Produce : "+ ANSI_RESET);
+                for (String key : playerHand.hand.get(i).building.getResProd().list_ressource.keySet()){
+                    System.out.print(ANSI_GREEN + playerHand.hand.get(i).getBuilding().getResProd().list_ressource.get(key).getName() + " : " );
+                    System.out.print(playerHand.hand.get(i).getBuilding().getResProd().list_ressource.get(key).getQuantity()+ ", "+ANSI_RESET);
+                }
+                System.out.print(ANSI_BLUE +" --> Consome : " + ANSI_RESET);
+                for (String key : playerHand.hand.get(i).building.getResConso().list_ressource.keySet()){
+                    System.out.print(ANSI_BLUE + playerHand.hand.get(i).getBuilding().getResConso().list_ressource.get(key).getName() + " : " );
+                    System.out.print(playerHand.hand.get(i).getBuilding().getResConso().list_ressource.get(key).getQuantity()+ ", "+ANSI_RESET);
+                }
             }
+            System.out.println("\n");
 
             //Get the instruction of the player
             choixMenu=entree.nextLine();
 
             //Pass turn
             if(Objects.equals(choixMenu, "d")){
-                turn++;
-                playerHand.draw(turn);
-                try {
-                    board.consumeRessources(stockageRessource);
-                }catch (RessourceException e){
-                    System.out.println(e.getName());
-                    return 0;
-                }
-                board.gatherRessources(stockageRessource);
-                return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+                return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
 
             //Stop the game
             }else if(Objects.equals(choixMenu,"ff")) {
@@ -128,8 +141,9 @@ public class Turn {
                     try {
                         playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
                         playerHand.playCard(playerHand.hand.get(choix), board);
+                        return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
                     }catch (RessourceException e){
-                        System.out.println(e.getName());
+                        System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
                     }
                 } else {
                     System.out.println("No Card to play");
@@ -137,4 +151,22 @@ public class Turn {
             }
         }
     }
+
+    public int passTurn(Board board, PlayerHand playerHand, int turn, StockageRessource stockageRessource, StockageCapacity stockageCapacity){
+        turn++;
+        playerHand.draw(turn);
+        if(playerHand.hand.size()>7){
+            playerHand.deleteOneCard();
+        }
+        board.gatherRessources(stockageRessource);
+        try {
+            board.consumeRessources(stockageRessource);
+        }catch (RessourceException e){
+            System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
+            return 0;
+        }
+        return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+
+    }
 }
+

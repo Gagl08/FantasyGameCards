@@ -10,15 +10,12 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
-import fr.bordeaux.depInfo.projetAO.ressouce.Food;
-import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
-import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
-import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
+import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Farm extends Decorateur {
+public class StoneMine extends Decorateur {
 
     private final StockageRessource getRessourceConsome = new StockageRessource();
     private final StockageRessource getRessourceConstruct = new StockageRessource();
@@ -26,17 +23,19 @@ public class Farm extends Decorateur {
     private final StockageCapacity getCapacity = new StockageCapacity();
 
 
-    public Farm(Building_Interface building_interface) {
+    public StoneMine(Building_Interface building_interface) {
         super(building_interface);
         Gold gold = new Gold(1);
-        //this.getRessourceConsome.addRessource(gold);
-        Wood wood = new Wood(10);
+        Wood wood = new Wood(2);
+        this.getRessourceConsome.addRessource(gold);
+        this.getRessourceConsome.addRessource(wood);
+        wood = new Wood(15);
         HashMap<String,Ressource> list = new HashMap<>();
         list.put(wood.getName(), wood);
         list.put(gold.getName(),gold);
         this.getRessourceConstruct.addRessource(list);
-        Food food = new Food(2);
-        this.getRessourceProduct.addRessource(food);
+        Stone stone = new Stone(5);
+        this.getRessourceProduct.addRessource(stone);
 
         Food_capacity food_capacity = new Food_capacity(50);
         this.getCapacity.addCapacity(food_capacity);
@@ -44,7 +43,7 @@ public class Farm extends Decorateur {
 
     @Override
     public String getName() {
-        return super.getName()+"Farm";
+        return super.getName()+"Stone Mine";
     }
 
     @Override

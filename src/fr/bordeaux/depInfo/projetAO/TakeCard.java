@@ -27,7 +27,9 @@ public class TakeCard {
         Building_Interface farmhouse = new Farmhouse(building);
         Building_Interface lumberjack = new Lumberjack(building);
         Building_Interface cow = new Cow(building);
-        Building_Interface sheep = new Cow(building);
+        Building_Interface sheep = new Sheep(building);
+        Building_Interface stoneMine = new StoneMine(building);
+        Building_Interface goldMine = new GoldMine(building);
 
         list.add(farm);
         list.add(forest);
@@ -35,6 +37,8 @@ public class TakeCard {
         list.add(lumberjack);
         list.add(cow);
         list.add(sheep);
+        list.add(stoneMine);
+        list.add(goldMine);
 
         //Late Card
         if (turn > 5) {

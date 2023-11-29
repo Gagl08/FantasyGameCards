@@ -11,6 +11,7 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * Player Hand
@@ -62,5 +63,14 @@ public class PlayerHand {
             }
         }
         stockageRessource.setList_ressource(ressourcesStockage);
+    }
+
+    public void deleteOneCard (){
+        Scanner entree=new Scanner(System.in);
+        String deletedChoice;
+        System.out.println("Delete one of your card : ");
+        deletedChoice=entree.nextLine();
+        int delChoice = Integer.parseInt(deletedChoice);
+        this.hand.remove(delChoice);
     }
 }
