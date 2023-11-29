@@ -35,16 +35,16 @@ public class TakeCard {
         list.add(forest);
         list.add(farmhouse);
         list.add(lumberjack);
-        list.add(cow);
         list.add(sheep);
         list.add(stoneMine);
         list.add(goldMine);
 
         //Late Card
-        if (turn > 5) {
+        if (turn > 10) {
             Building_Interface sawmill = new Sawmill(building);
             Building_Interface windmill = new Windmill(building);
 
+            list.add(cow);
             list.add(windmill);
             list.add(sawmill);
         }
