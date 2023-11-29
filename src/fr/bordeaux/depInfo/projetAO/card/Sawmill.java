@@ -44,6 +44,13 @@ public class Sawmill extends Decorateur {
 
         Lumber lumber = new Lumber(10);
         getRessourceProduct.addRessource(lumber);
+
+        Wood_capacity wood_capacity = new Wood_capacity(100);
+        Lumber_capacity lumber_capacity = new Lumber_capacity(100);
+        HashMap<String,Capacity> hashMap2 = new HashMap<>();
+        hashMap2.put(wood_capacity.getName(), wood_capacity);
+        hashMap2.put(lumber_capacity.getName(), lumber_capacity);
+        getCapacity.addCapacity(hashMap2);
     }
 
     @Override
@@ -66,13 +73,7 @@ public class Sawmill extends Decorateur {
     }
 
     public StockageCapacity getCapacity(){
-        Wood_capacity wood_capacity = new Wood_capacity(100);
-        Lumber_capacity lumber_capacity = new Lumber_capacity(100);
-        HashMap<String,Capacity> arrayList = new HashMap<>();
-        arrayList.put(wood_capacity.getName(), wood_capacity);
-        arrayList.put(lumber_capacity.getName(), lumber_capacity);
-        super.getCapacity().addCapacity(arrayList);
-        return super.getCapacity();
+        return getCapacity;
     }
 
     @Override

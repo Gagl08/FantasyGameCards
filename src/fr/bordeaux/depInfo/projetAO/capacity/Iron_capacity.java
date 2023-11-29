@@ -13,5 +13,6 @@ public class Iron_capacity extends Capacity {
 
     public Iron_capacity(int quantity) {
         super(quantity);
+        this.name = "Iron_Capacity";
     }
 }

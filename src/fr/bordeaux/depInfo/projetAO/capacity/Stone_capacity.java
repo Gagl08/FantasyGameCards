@@ -14,5 +14,6 @@ public class Stone_capacity extends Capacity {
 
     public Stone_capacity(int quantity) {
         super(quantity);
+        this.name = "Stone_Capacity";
     }
 }

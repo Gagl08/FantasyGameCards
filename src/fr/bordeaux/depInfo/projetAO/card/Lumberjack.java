@@ -9,11 +9,9 @@ package fr.bordeaux.depInfo.projetAO.card;
 import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
-import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.capacity.Wood_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Lumberjack extends Decorateur {
@@ -40,6 +38,9 @@ public class Lumberjack extends Decorateur {
 
         wood = new Wood(5);
         getRessourceProduct.addRessource(wood);
+
+        Wood_capacity wood_capacity = new Wood_capacity(100);
+        getCapacity.addCapacity(wood_capacity);
     }
 
     public String getName() {
@@ -60,11 +61,7 @@ public class Lumberjack extends Decorateur {
         return getRessourceProduct;
     }
 
-    public StockageCapacity getCapacity(){
-        Wood_capacity wood_capacity = new Wood_capacity(100);
-        super.getCapacity().addCapacity(wood_capacity);
-        return super.getCapacity();
-    }
+    public StockageCapacity getCapacity(){return getCapacity;}
 
     @Override
     public int getNbWorkerNeeded() {

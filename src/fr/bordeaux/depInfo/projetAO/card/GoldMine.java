@@ -12,7 +12,6 @@ import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GoldMine extends Decorateur {

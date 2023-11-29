@@ -15,7 +15,6 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Farmhouse extends Decorateur {

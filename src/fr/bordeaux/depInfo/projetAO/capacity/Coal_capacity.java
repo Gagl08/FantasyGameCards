@@ -14,5 +14,6 @@ public class Coal_capacity extends Capacity {
 
     public Coal_capacity(int quantity) {
         super(quantity);
+        this.name = "Coal_Capacity";
     }
 }

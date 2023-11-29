@@ -10,6 +10,7 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
+import fr.bordeaux.depInfo.projetAO.capacity.Stone_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.ArrayList;
@@ -37,8 +38,8 @@ public class StoneMine extends Decorateur {
         Stone stone = new Stone(5);
         this.getRessourceProduct.addRessource(stone);
 
-        Food_capacity food_capacity = new Food_capacity(50);
-        this.getCapacity.addCapacity(food_capacity);
+        Stone_capacity stone_capacity = new Stone_capacity(50);
+        this.getCapacity.addCapacity(stone_capacity);
     }
 
     @Override

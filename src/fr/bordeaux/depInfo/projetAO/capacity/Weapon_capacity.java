@@ -14,5 +14,6 @@ public class Weapon_capacity extends Capacity {
 
     public Weapon_capacity(int quantity) {
         super(quantity);
+        this.name = "Weapon_Capacity";
     }
 }

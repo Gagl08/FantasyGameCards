@@ -6,6 +6,7 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
 import fr.bordeaux.depInfo.projetAO.exception.RessourceException;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
@@ -69,6 +70,30 @@ public class Turn {
 
         stockageRessource.addRessource(list);
         return stockageRessource;
+    }
+
+    /**
+     * General Stockage ressource use by the player
+     * @return Stockage ressource
+     */
+    public StockageCapacity createStockageCapacity(){
+        StockageCapacity stockageCapacity = new StockageCapacity();
+
+        HashMap<String, Capacity> list = new HashMap<>();
+        list.put("Food_Capacity", new Capacity(25));
+        list.put("Wood_Capacity", new Capacity(25));
+        list.put("Stone_Capacity", new Capacity(15));
+        list.put("Coal_Capacity", new Capacity(0));
+        list.put("Iron_Capacity", new Capacity(0));
+        list.put("Gold_Capacity", new Capacity(20));
+        list.put("Brique_Capacity", new Capacity(0));
+        list.put("Lumber_Capacity", new Capacity(0));
+        list.put("Habitant_Capacity", new Capacity(5));
+        list.put("Weapon_Capacity", new Capacity(0));
+        list.put("Tool_Capacity", new Capacity(0));
+
+        stockageCapacity.addCapacity(list);
+        return stockageCapacity;
     }
 
     /**

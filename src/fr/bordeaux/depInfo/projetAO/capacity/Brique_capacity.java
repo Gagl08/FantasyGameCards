@@ -14,5 +14,6 @@ public class Brique_capacity extends Capacity {
 
     public Brique_capacity(int quantity) {
         super(quantity);
+        this.name = "Brique_Capacity";
     }
 }

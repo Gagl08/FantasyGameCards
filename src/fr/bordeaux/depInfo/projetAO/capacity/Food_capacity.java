@@ -15,5 +15,6 @@ public class Food_capacity extends Capacity {
 
     public Food_capacity(int quantity) {
         super(quantity);
+        this.name = "Defence_Capacity";
     }
 }

@@ -14,5 +14,6 @@ public class Tool_capacity extends Capacity{
 
     public Tool_capacity(int quantity) {
         super(quantity);
+        this.name = "Tool_Capacity";
     }
 }

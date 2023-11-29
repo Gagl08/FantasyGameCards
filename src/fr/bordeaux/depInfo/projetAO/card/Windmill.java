@@ -42,6 +42,9 @@ public class Windmill extends Decorateur {
 
         Food food = new Food(10);
         getRessourceProduct.addRessource(food);
+
+        Food_capacity food_capacity = new Food_capacity(100);
+        getCapacity.addCapacity(food_capacity);
     }
 
     @Override
@@ -64,9 +67,7 @@ public class Windmill extends Decorateur {
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(100);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+        return getCapacity;
     }
 
     @Override

@@ -13,5 +13,6 @@ public class Gold_capacity extends Capacity {
 
     public Gold_capacity(int quantity) {
         super(quantity);
+        this.name = "Gold_Capacity";
     }
 }

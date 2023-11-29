@@ -37,6 +37,9 @@ public class Sheep extends Decorateur {
 
         food = new Food(5);
         getRessourceProduct.addRessource(food);
+
+        Food_capacity food_capacity = new Food_capacity(25);
+        getCapacity.addCapacity(food_capacity);
     }
 
     @Override
@@ -59,9 +62,8 @@ public class Sheep extends Decorateur {
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(25);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+
+        return getCapacity;
     }
 
     @Override

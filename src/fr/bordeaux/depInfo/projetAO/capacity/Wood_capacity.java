@@ -14,5 +14,6 @@ public class Wood_capacity extends Capacity {
 
     public Wood_capacity(int quantity) {
         super(quantity);
+        this.name = "Wood_Capacity";
     }
 }
