@@ -20,8 +20,32 @@ import java.util.HashMap;
 
 public class Farmhouse extends Decorateur {
 
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
     public Farmhouse(Building_Interface building_interface) {
         super(building_interface);
+        Gold gold = new Gold(1);
+        Wood wood = new Wood(10);
+        HashMap<String,Ressource> list1 = new HashMap<>();
+        list1.put(gold.getName(),gold);
+        list1.put(wood.getName(),wood);
+        getRessourceConsome.addRessource(list1);
+
+        wood = new Wood(10);
+        gold = new Gold(10);
+        HashMap<String,Ressource> list2 = new HashMap<>();
+        list2.put(wood.getName(),wood);
+        list2.put(gold.getName(),gold);
+        getRessourceConstruct.addRessource(list2);
+
+        Food food = new Food(5);
+        getRessourceProduct.addRessource(food);
+
+        Food_capacity food_capacity = new Food_capacity(100);
+        getCapacity.addCapacity(food_capacity);
     }
 
     @Override
@@ -31,36 +55,20 @@ public class Farmhouse extends Decorateur {
 
     @Override
     public StockageRessource getResConso() {
-        Gold gold = new Gold(1);
-        Wood wood = new Wood(10);
-        HashMap<String,Ressource> arrayList = new HashMap<String,Ressource>();
-        arrayList.put("Gold",new Ressource(1));
-        arrayList.put("Wood", new Ressource(10));
-        super.getResConso().addRessource(arrayList);
-        return super.getResConso();
+        return getRessourceConsome;
     }
 
     @Override
     public StockageRessource getResConstruct() {
-        Wood wood = new Wood(10);
-        Gold gold = new Gold(10);
-        HashMap<String,Ressource> arrayList = new HashMap<String,Ressource>();
-        arrayList.put("Gold",new Ressource(10));
-        arrayList.put("Wood", new Ressource(10));
-        super.getResConstruct().addRessource(arrayList);
-        return super.getResConstruct();
+        return getRessourceConstruct;
     }
 
     public StockageRessource getResProd(){
-        Food food = new Food(5);
-        super.getResProd().addRessource(food);
-        return super.getResProd();
+        return getRessourceProduct;
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(100);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+        return getCapacity;
     }
 
     @Override

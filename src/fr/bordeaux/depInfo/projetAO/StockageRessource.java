@@ -8,7 +8,6 @@ package fr.bordeaux.depInfo.projetAO;
 
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

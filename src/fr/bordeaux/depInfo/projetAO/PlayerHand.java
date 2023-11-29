@@ -6,6 +6,7 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import fr.bordeaux.depInfo.projetAO.exception.RessourceException;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
 import java.util.ArrayList;
@@ -46,52 +47,20 @@ public class PlayerHand {
      * @param card card to play
      * @param stockageRessource general to decrease
      */
-    public void constructCard(Card card, StockageRessource stockageRessource){
-        System.out.println("calling contructCard");
+    public void constructCard(Card card, StockageRessource stockageRessource) throws RessourceException {
         HashMap<String, Ressource> ressourcesCard;
         HashMap<String, Ressource> ressourcesStockage;
 
         ressourcesCard = card.getBuilding().getResConstruct().list_ressource;
         ressourcesStockage = stockageRessource.list_ressource;
 
-
         for (String key : ressourcesCard.keySet()) {
-            System.out.println("Calling lessQuantity method, ressourcesCard value : " + ressourcesCard.get(key).getName() + ", ressourseStockage name : " + ressourcesStockage.get(key).getName());
-            ressourcesStockage.get(key).lessQuantity(ressourcesCard.get(key).getQuantity());
-        }
-        stockageRessource.setList_ressource(ressourcesStockage);
-    }
-
-    /**
-     * Check if the player can play a card.
-     * Verifing the ressource of the player are anougth
-     * @param card to check
-     * @param stockageRessource general
-     * @return true if is possible false else
-     */
-    public boolean canPlay(Card card, StockageRessource stockageRessource){
-        HashMap<String, Ressource> ressourcesCard;
-        HashMap<String, Ressource> ressourcesStockage;
-
-        ressourcesCard = card.getBuilding().getResConstruct().list_ressource;
-        ressourcesStockage = stockageRessource.list_ressource;
-
-
-        for (String key : ressourcesCard.keySet()) {
-            if (! (ressourcesCard.get(key).getQuantity() <= ressourcesStockage.get(key).getQuantity())) return false;
-        }
-
-        /*
-        for (Ressource ressource : ressourcesStockage) {
-            for (Ressource value : ressourcesCard) {
-                if (value.getName().equals(ressource.getName())) {
-                    if (! (value.getQuantity() <= ressource.getQuantity())){
-                        return false;
-                    }
-                }
+            if (! (ressourcesCard.get(key).getQuantity() <= ressourcesStockage.get(key).getQuantity())){
+                throw new RessourceException("You Don't have the found to construct this !");
+            }else{
+                ressourcesStockage.get(key).lessQuantity(ressourcesCard.get(key).getQuantity());
             }
         }
-        */
-        return true;
+        stockageRessource.setList_ressource(ressourcesStockage);
     }
 }

@@ -62,7 +62,6 @@ public class Farm extends Decorateur {
     }
 
     public StockageCapacity getCapacity(){
-
         return getCapacity;
     }
 

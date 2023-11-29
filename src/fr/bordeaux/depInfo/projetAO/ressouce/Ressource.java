@@ -40,8 +40,6 @@ public class Ressource {
     public void addQuantity(int quantity){
         this.callno ++;
         this.quantity += quantity;
-        System.out.println("new quantity  of "+ this.getName() + " :" + this.quantity);
-        System.out.println("callno : " + this.callno);
     }
 
     /**
@@ -50,7 +48,5 @@ public class Ressource {
     public void lessQuantity(int quantity){
         this.callno ++;
         this.quantity -= quantity;
-        System.out.println("new quantity  of "+ this.getName() + " :" + this.quantity);
-        System.out.println("callno : " + this.callno);
     }
 }

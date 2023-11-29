@@ -15,8 +15,20 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
 public class Forest extends Decorateur {
 
+    private final StockageRessource getRessourceConsome = new StockageRessource();
+    private final StockageRessource getRessourceConstruct = new StockageRessource();
+    private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
     public Forest(Building_Interface building_interface) {
         super(building_interface);
+        Gold gold = new Gold(1);
+        getRessourceConstruct.addRessource(gold);
+        Wood wood = new Wood(2);
+        getRessourceProduct.addRessource(wood);
+
+        Wood_capacity wood_capacity = new Wood_capacity(50);
+        getCapacity.addCapacity(wood_capacity);
     }
 
     @Override
@@ -24,23 +36,26 @@ public class Forest extends Decorateur {
         return super.getName()+"Forest";
     }
 
-    public StockageRessource getResProd(){
-        Wood wood = new Wood(2);
-        super.getResProd().addRessource(wood);
-        return super.getResProd();
+    public StockageRessource getGetResCons(){
+        return getRessourceConsome;
     }
 
-    public StockageCapacity getCapacity(){
-        Wood_capacity food = new Wood_capacity(50);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+    @Override
+    public StockageRessource getResConso() {
+        return getRessourceConsome;
     }
 
     @Override
     public StockageRessource getResConstruct() {
-        Gold gold = new Gold(1);
-        super.getResConstruct().addRessource(gold);
-        return super.getResConstruct();
+        return getRessourceConstruct;
+    }
+
+    public StockageRessource getResProd(){
+        return getRessourceProduct;
+    }
+
+    public StockageCapacity getCapacity(){
+        return getCapacity;
     }
 
     @Override

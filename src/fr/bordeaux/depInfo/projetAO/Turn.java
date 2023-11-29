@@ -6,9 +6,9 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import fr.bordeaux.depInfo.projetAO.exception.RessourceException;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Scanner;
@@ -122,7 +122,16 @@ public class Turn {
             if(Objects.equals(choixMenu, "d")){
                 turn++;
                 playerHand.draw(turn);
-                gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+                try {
+                    board.consumeRessources(stockageRessource);
+                }catch (RessourceException e){
+                    System.out.println(e.getName());
+                    arret = true;
+                }
+                if (!arret){
+                    board.gatherRessources(stockageRessource);
+                    gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+                }
 
             //Stop the game
             }else if(Objects.equals(choixMenu,"ff")) {
@@ -132,11 +141,11 @@ public class Turn {
             }else {
                 choix=Integer.parseInt(choixMenu);
                 if (choix<playerHand.hand.size()) {
-                    if(playerHand.canPlay(playerHand.hand.get(choix),stockageRessource)){
+                    try {
                         playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
                         playerHand.playCard(playerHand.hand.get(choix), board);
-                    }else {
-                        System.out.println("To expensive ! ");
+                    }catch (RessourceException e){
+                        System.out.println(e.getName());
                     }
                 } else {
                     System.out.println("No Card to play");

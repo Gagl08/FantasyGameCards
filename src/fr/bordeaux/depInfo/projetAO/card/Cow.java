@@ -12,13 +12,14 @@ import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cow extends Decorateur {
     private final StockageRessource getRessourceConsome = new StockageRessource();
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
+    private final StockageCapacity getCapacity = new StockageCapacity();
+
 
     public Cow(Building_Interface building_interface) {
         super(building_interface);
@@ -33,6 +34,9 @@ public class Cow extends Decorateur {
         this.getRessourceConstruct.addRessource(list);
         food = new Food(5);
         this.getRessourceProduct.addRessource(food);
+
+        Food_capacity food_capacity = new Food_capacity(25);
+        this.getCapacity.addCapacity(food_capacity);
     }
 
     @Override
@@ -55,9 +59,7 @@ public class Cow extends Decorateur {
     }
 
     public StockageCapacity getCapacity(){
-        Food_capacity food = new Food_capacity(25);
-        super.getCapacity().addCapacity(food);
-        return super.getCapacity();
+        return getCapacity;
     }
 
     @Override

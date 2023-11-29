@@ -94,13 +94,4 @@ public class Decorateur implements Building_Interface {
         return this.building_interface.isFunctional();
     }
 
-    @Override
-    public void produceRessource(PlayerHand player) {
-        this.building_interface.produceRessource(player);
-    }
-
-    @Override
-    public void consumeRessource(PlayerHand player) {
-        this.building_interface.consumeRessource(player);
-    }
 }

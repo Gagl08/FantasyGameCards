@@ -29,7 +29,5 @@ public interface Building_Interface {
     int getTimerBuild();
     void setTimerBuild(int timerBuild);
     boolean isFunctional();
-    void produceRessource(PlayerHand player);
-    void consumeRessource(PlayerHand player);
 
 }
