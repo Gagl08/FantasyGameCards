@@ -59,19 +59,6 @@ public class Turn {
         list.put("Tool", new Ressource(0));
         list.put("Defence", new Ressource(0));
 
-        Food food = new Food(20);
-        Wood wood = new Wood(15);
-        Stone stone = new Stone(5);
-        Coal coal = new Coal(0);
-        Iron iron = new Iron(0);
-        Gold gold = new Gold(25);
-        Brique brique = new Brique(0);
-        Lumber lumber = new Lumber(0);
-        Habitant habitant = new Habitant(5);
-        Weapon weapon = new Weapon(0);
-        Tool tool = new Tool(0);
-        Defence defence = new Defence(0);
-
         stockageRessource.addRessource(list);
         return stockageRessource;
     }
