@@ -55,7 +55,7 @@ public class Board {
         stockageRessource.setList_ressource(ressourcesStockage);
     }
 
-    public void gatherRessources(StockageRessource stockageRessource){
+    public void gatherRessources(StockageCapacity capacity,StockageRessource stockageRessource){
         //Parcourt chaque carte pour augmenter les ressources du joueur
         HashMap<String, Ressource> ressourcesStockage;
         ressourcesStockage = stockageRessource.list_ressource;
@@ -65,7 +65,7 @@ public class Board {
             ressourcesCard = card.getBuilding().getResProd().list_ressource;
 
             for (String key : ressourcesCard.keySet()) {
-                ressourcesStockage.get(key).addQuantity(ressourcesCard.get(key).getQuantity());
+                ressourcesStockage.get(key).addQuantity(capacity, key + "_Capacity", ressourcesCard.get(key).getQuantity());
             }
         }
         stockageRessource.setList_ressource(ressourcesStockage);

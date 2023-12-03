@@ -30,6 +30,7 @@ public class Card {
         return id;
     }
 
+
     /**
      * Getteur of the building
      * @return Building of the Card

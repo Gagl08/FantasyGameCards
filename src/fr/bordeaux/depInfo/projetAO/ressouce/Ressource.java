@@ -1,5 +1,7 @@
 package fr.bordeaux.depInfo.projetAO.ressouce;
 
+import fr.bordeaux.depInfo.projetAO.StockageCapacity;
+
 public class Ressource {
     int quantity;
     String name;
@@ -37,9 +39,11 @@ public class Ressource {
     /**
      * @param quantity to add
      */
-    public void addQuantity(int quantity){
-        this.callno ++;
-        this.quantity += quantity;
+    public void addQuantity(StockageCapacity capacity, String name, int quantity){
+        int new_quantity = this.quantity + quantity;
+        if (new_quantity <= capacity.getList_capacity().get(name).getQuantity()) {
+            this.quantity += quantity;
+        }
     }
 
     /**

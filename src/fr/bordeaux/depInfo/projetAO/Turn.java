@@ -36,13 +36,14 @@ public class Turn {
         PlayerHand playerHand = new PlayerHand();
         Board board = new Board();
 
-        StockageCapacity stockageCapacity = new StockageCapacity();
+        StockageCapacity stockageCapacity ;
         StockageRessource stockageRessource;
 
         for (int i = 0; i < 5; i++) {
             playerHand.draw(turn);
         }
         stockageRessource=createStockageRessource();
+        stockageCapacity = createStockageCapacity();
         iturn = gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
         System.out.println("You have play " + iturn + "turn's");
     }
@@ -183,7 +184,7 @@ public class Turn {
         if(playerHand.hand.size()>7){
             playerHand.deleteOneCard();
         }
-        board.gatherRessources(stockageRessource);
+        board.gatherRessources(stockageCapacity, stockageRessource);
         try {
             board.consumeRessources(stockageRessource);
         }catch (RessourceException e){

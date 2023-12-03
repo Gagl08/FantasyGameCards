@@ -7,6 +7,7 @@
 package fr.bordeaux.depInfo.projetAO;
 
 import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
+import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
 
 import java.util.HashMap;
 
