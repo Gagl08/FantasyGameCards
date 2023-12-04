@@ -44,6 +44,10 @@ public class Ressource {
         if (new_quantity <= capacity.getList_capacity().get(name).getQuantity()) {
             this.quantity += quantity;
         }
+        else {
+            this.quantity = capacity.getList_capacity().get(name).getQuantity();
+            System.out.println("Too much" + name + "in stock, you cannot get more !");
+        }
     }
 
     /**

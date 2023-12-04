@@ -58,13 +58,13 @@ public class Turn {
         HashMap<String, Ressource> list = new HashMap<>();
         list.put("Food", new Ressource(25));
         list.put("Wood", new Ressource(25));
-        list.put("Stone", new Ressource(15));
+        list.put("Stone", new Ressource(25));
         list.put("Coal", new Ressource(0));
         list.put("Iron", new Ressource(0));
-        list.put("Gold", new Ressource(20));
-        list.put("Brique", new Ressource(0));
-        list.put("Lumber", new Ressource(0));
-        list.put("Habitant", new Ressource(5));
+        list.put("Gold", new Ressource(40));
+        list.put("Brique", new Ressource(10));
+        list.put("Lumber", new Ressource(12));
+        list.put("Habitant", new Ressource(25));
         list.put("Weapon", new Ressource(0));
         list.put("Tool", new Ressource(0));
         list.put("Defence", new Ressource(0));
@@ -82,16 +82,16 @@ public class Turn {
 
         HashMap<String, Capacity> list = new HashMap<>();
         list.put("Food_Capacity", new Capacity(25));
-        list.put("Wood_Capacity", new Capacity(25));
-        list.put("Stone_Capacity", new Capacity(15));
-        list.put("Coal_Capacity", new Capacity(0));
-        list.put("Iron_Capacity", new Capacity(0));
-        list.put("Gold_Capacity", new Capacity(20));
-        list.put("Brique_Capacity", new Capacity(0));
-        list.put("Lumber_Capacity", new Capacity(0));
-        list.put("Habitant_Capacity", new Capacity(5));
-        list.put("Weapon_Capacity", new Capacity(0));
-        list.put("Tool_Capacity", new Capacity(0));
+        list.put("Wood_Capacity", new Capacity(100));
+        list.put("Stone_Capacity", new Capacity(50));
+        list.put("Coal_Capacity", new Capacity(10));
+        list.put("Iron_Capacity", new Capacity(10));
+        list.put("Gold_Capacity", new Capacity(100));
+        list.put("Brique_Capacity", new Capacity(25));
+        list.put("Lumber_Capacity", new Capacity(25));
+        list.put("Habitant_Capacity", new Capacity(100));
+        list.put("Weapon_Capacity", new Capacity(10));
+        list.put("Tool_Capacity", new Capacity(10));
 
         stockageCapacity.addCapacity(list);
         return stockageCapacity;
