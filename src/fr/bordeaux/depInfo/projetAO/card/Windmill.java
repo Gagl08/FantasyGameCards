@@ -20,6 +20,7 @@ public class Windmill extends Decorateur {
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
+    private int tempsDeConstruction;
 
     public Windmill(Building_Interface building_interface) {
         super(building_interface);
@@ -45,6 +46,8 @@ public class Windmill extends Decorateur {
 
         Food_capacity food_capacity = new Food_capacity(100);
         getCapacity.addCapacity(food_capacity);
+
+        this.tempsDeConstruction = 2;
     }
 
     @Override
@@ -83,6 +86,10 @@ public class Windmill extends Decorateur {
 
     @Override
     public int getTimerBuild() {
-        return super.getTimerBuild()+2;
+        return tempsDeConstruction;
+    }
+
+    public void setTimerBuild(int time){
+        tempsDeConstruction = time;
     }
 }

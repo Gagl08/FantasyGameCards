@@ -22,6 +22,7 @@ public class Sawmill extends Decorateur {
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
+    private int tempsDeConstruction;
 
     public Sawmill(Building_Interface building_interface) {
         super(building_interface);
@@ -51,6 +52,8 @@ public class Sawmill extends Decorateur {
         hashMap2.put(wood_capacity.getName(), wood_capacity);
         hashMap2.put(lumber_capacity.getName(), lumber_capacity);
         getCapacity.addCapacity(hashMap2);
+
+        this.tempsDeConstruction = 2;
     }
 
     @Override
@@ -89,6 +92,10 @@ public class Sawmill extends Decorateur {
 
     @Override
     public int getTimerBuild() {
-        return super.getTimerBuild()+2;
+        return tempsDeConstruction;
+    }
+
+    public void setTimerBuild(int time){
+        tempsDeConstruction = time;
     }
 }

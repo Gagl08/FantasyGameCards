@@ -82,9 +82,6 @@ public class PlayerHand {
         capacityCard = card.getBuilding().getCapacity().list_capacity;
         capacityStockage = stockageCapacity.list_capacity;
 
-        System.out.println(capacityCard);
-        System.out.println(capacityStockage);
-
         if(!capacityCard.isEmpty()){
             for(String key : capacityCard.keySet()){
                 System.out.println("1");
