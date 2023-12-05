@@ -23,7 +23,7 @@ public class Farmhouse extends Decorateur {
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
-    private final int tempsDeConstruction;
+    private int tempsDeConstruction;
 
     public Farmhouse(Building_Interface building_interface) {
         super(building_interface);
@@ -86,6 +86,10 @@ public class Farmhouse extends Decorateur {
 
     @Override
     public int getTimerBuild() {
-        return super.getTimerBuild()+1;
+        return tempsDeConstruction;
+    }
+
+    public void setTimerBuild(int time){
+        tempsDeConstruction = time;
     }
 }

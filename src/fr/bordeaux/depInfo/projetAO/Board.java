@@ -75,4 +75,28 @@ public class Board {
         }
         stockageRessource.setList_ressource(ressourcesStockage);
     }
+
+    public void updateBuilding(){
+        for (Card card : this.cardsPlayed){
+            if(!card.getBuilding().isActive()){
+                System.out.println(card.getBuilding().getName());
+                int time = card.getBuilding().getTimerBuild();
+                if(time>0){
+                    card.getBuilding().setTimerBuild(time-1);
+                }else{
+                    card.getBuilding().setActive(true);
+                }
+            }
+        }
+    }
+
+    public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity){
+        gatherRessources(stockageCapacity, stockageRessource);
+        updateBuilding();
+        try {
+            consumeRessources(stockageRessource);
+        }catch (RessourceException e){
+            System.out.println(e.getName());
+        }
+    }
 }

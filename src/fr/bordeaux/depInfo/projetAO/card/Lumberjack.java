@@ -20,6 +20,7 @@ public class Lumberjack extends Decorateur {
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
+    private int tempsDeConstruction;
 
     public Lumberjack(Building_Interface building_interface) {
         super(building_interface);
@@ -41,6 +42,8 @@ public class Lumberjack extends Decorateur {
 
         Wood_capacity wood_capacity = new Wood_capacity(100);
         getCapacity.addCapacity(wood_capacity);
+
+        this.tempsDeConstruction = 1;
     }
 
     public String getName() {
@@ -76,6 +79,10 @@ public class Lumberjack extends Decorateur {
 
     @Override
     public int getTimerBuild() {
-        return super.getTimerBuild()+1;
+        return tempsDeConstruction;
+    }
+
+    public void setTimerBuild(int time){
+        tempsDeConstruction = time;
     }
 }

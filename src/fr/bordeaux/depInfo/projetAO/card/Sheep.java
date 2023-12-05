@@ -71,9 +71,4 @@ public class Sheep extends Decorateur {
         super.setNbWorkerNeeded(1);
         return super.getNbWorkerNeeded();
     }
-
-    @Override
-    public int getTimerBuild() {
-        return super.getTimerBuild()+1;
-    }
 }

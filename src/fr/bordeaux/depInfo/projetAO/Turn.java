@@ -24,6 +24,8 @@ public class Turn {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+
 
     /**
      * Use the first when you create the game
@@ -138,7 +140,13 @@ public class Turn {
             //BOARD
             System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
-                System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
+                if (!(board.cardsPlayed.get(i).getBuilding().getTimerBuild()==0)){
+                    System.out.println(board.cardsPlayed.get(i).getBuilding().getTimerBuild());
+                    System.out.print(ANSI_YELLOW + board.cardsPlayed.get(i).getBuilding().getName()+ ANSI_RESET+", ");
+                } else {
+                    System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
+
+                }
             }
 
             //HAND
@@ -198,17 +206,10 @@ public class Turn {
         if(playerHand.hand.size()>7){
             playerHand.deleteOneCard();
         }
-        board.gatherRessources(stockageCapacity, stockageRessource);
-        try {
-            board.consumeRessources(stockageRessource);
-        }catch (RessourceException e){
-            System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
-            return 0;
-        }
+        board.updateBoard(stockageRessource,stockageCapacity);
         Event_Manager eventManager = new Event_Manager();
         eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
-
     }
 }
 
