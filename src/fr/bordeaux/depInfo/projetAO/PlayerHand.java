@@ -85,8 +85,11 @@ public class PlayerHand {
         System.out.println(capacityCard);
         System.out.println(capacityStockage);
 
-        for(String key : capacityCard.keySet()){
-            capacityStockage.get(key).addQuantity(capacityCard.get(key).getQuantity());
+        if(!capacityCard.isEmpty()){
+            for(String key : capacityCard.keySet()){
+                System.out.println("1");
+                capacityStockage.get(key).addQuantity(capacityCard.get(key).getQuantity());
+            }
         }
         stockageCapacity.setList_capacity(capacityStockage);
     }

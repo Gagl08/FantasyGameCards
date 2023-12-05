@@ -24,7 +24,6 @@ public class Turn {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
 
-
     /**
      * Use the first when you create the game
      * Declare and Initialise the principal fonctions an Object to start a game
@@ -56,8 +55,8 @@ public class Turn {
         StockageRessource stockageRessource = new StockageRessource();
 
         HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Food", new Ressource(25));
-        list.put("Wood", new Ressource(25));
+        list.put("Food", new Ressource(50));
+        list.put("Wood", new Ressource(50));
         list.put("Stone", new Ressource(25));
         list.put("Coal", new Ressource(0));
         list.put("Iron", new Ressource(0));
@@ -175,8 +174,8 @@ public class Turn {
                 choix=Integer.parseInt(choixMenu);
                 if (choix<playerHand.hand.size()) {
                     try {
-                        playerHand.gatherCapacity(playerHand.hand.get(choix),stockageCapacity);
                         playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
+                        playerHand.gatherCapacity(playerHand.hand.get(choix),stockageCapacity);
                         playerHand.playCard(playerHand.hand.get(choix), board);
                         return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
                     }catch (RessourceException e){

@@ -10,11 +10,9 @@ import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
-import fr.bordeaux.depInfo.projetAO.capacity.Gold_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.Food;
 import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
-import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
 import java.util.ArrayList;
 
@@ -27,7 +25,6 @@ public class TestStockage {
         Gold gold = new Gold(5);
         Food food = new Food(20);
 
-        Gold_capacity gold_capacity = new Gold_capacity(10);
         Food_capacity food_capacity = new Food_capacity(50);
 
         ArrayList<Ressource> test = new ArrayList<>();
@@ -35,7 +32,6 @@ public class TestStockage {
         test.add(food);
 
         ArrayList<Capacity> test2 = new ArrayList<>();
-        test2.add(gold_capacity);
         test2.add(food_capacity);
 /*
         //stocktest = new StockageRessource(test);
