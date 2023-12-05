@@ -11,12 +11,15 @@ public class WitchHunt implements Event_Interface{
     public void startEvent(Turn turn, Board board, PlayerHand player){
         int cpt = 0;
         Random random = new Random();
-        for (int i = 0; i < board.cardsPlayed.size(); i++){
-            int nb_witches = random.nextInt(0,25);
-            int nb_habitants = board.cardsPlayed.get(i).getBuilding().getNbHabAllowed();
-            board.cardsPlayed.get(i).getBuilding().setNbHabAllowed( nb_habitants - (nb_habitants * (1/nb_witches)) );
-            cpt += nb_habitants - (nb_habitants * (1/nb_witches));
+        int nb_witches = random.nextInt(0,25);
+        if (nb_witches != 0){
+            for (int i = 0; i < board.cardsPlayed.size(); i++){
+                int nb_habitants = board.cardsPlayed.get(i).getBuilding().getNbHabAllowed();
+                board.cardsPlayed.get(i).getBuilding().setNbHabAllowed( nb_habitants - (nb_habitants * (1/nb_witches)) );
+                cpt += nb_habitants - (nb_habitants * (1/nb_witches));
+            }
+            System.out.println(cpt + " filthy witches have been burned !");
         }
-        System.out.println(cpt + " filthy witches have been burned !");
+        else System.out.println("No witches have been found, but be careful...");
     }
 }

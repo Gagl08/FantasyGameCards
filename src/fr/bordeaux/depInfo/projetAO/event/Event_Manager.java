@@ -6,7 +6,7 @@ import fr.bordeaux.depInfo.projetAO.Turn;
 import java.util.Random;
 public class Event_Manager {
     private Event_Interface event;
-
+    public Event_Interface getEvent(){ return event; }
     public Event_Manager(){
         newEvent();
     }
@@ -28,7 +28,8 @@ public class Event_Manager {
                 System.out.println("Witches has been found in your village ! Christ compels you to burn those heathens !");
                 break;
             default:
-                this.event = new WitchHunt();
+                this.event = null;
+
         }
     }
     public void startEvent(Turn turn, Board board, PlayerHand player){

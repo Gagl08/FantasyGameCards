@@ -10,6 +10,8 @@ public class Deflation implements Event_Interface{
     public void startEvent(Turn turn, Board board, PlayerHand player) {
         try {
             board.consumeRessources(turn.stockageRessource);
+            int new_quantity = turn.stockageRessource.getList_ressource().get("Gold").getQuantity() / 4;
+            turn.stockageRessource.getList_ressource().get("Gold").addQuantity( turn.stockageCapacity, "Gold", new_quantity );
         } catch (RessourceException e) {
             throw new RuntimeException(e);
         }
