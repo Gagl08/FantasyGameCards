@@ -79,7 +79,6 @@ public class Board {
     public void updateBuilding(){
         for (Card card : this.cardsPlayed){
             if(!card.getBuilding().isActive()){
-                System.out.println(card.getBuilding().getName());
                 int time = card.getBuilding().getTimerBuild();
                 if(time>0){
                     card.getBuilding().setTimerBuild(time-1);
