@@ -24,6 +24,7 @@ public class Turn {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_MAGENTA = "\u001B[35m";
 
     /**
      * Use the first when you create the game
@@ -32,7 +33,9 @@ public class Turn {
 
     public StockageCapacity stockageCapacity ;
     public StockageRessource stockageRessource;
+    Event_Manager eventManager;
     public Turn(){
+        this.eventManager = new Event_Manager();
         this.stockageRessource = createStockageRessource();
         this.stockageCapacity = createStockageCapacity();
     }
@@ -205,8 +208,7 @@ public class Turn {
             System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
             return 0;
         }
-        Event_Manager eventManager = new Event_Manager();
-        eventManager.startEvent(this, board, playerHand);
+        this.eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
     }

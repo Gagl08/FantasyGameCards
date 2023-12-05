@@ -41,9 +41,7 @@ public class Ressource {
      */
     public void addQuantity(StockageCapacity capacity, String name, int quantity){
         int new_quantity = this.quantity + quantity;
-        if(capacity.getList_capacity().get(name)==null){
-            this.quantity += quantity;
-        }else if (new_quantity <= capacity.getList_capacity().get(name).getQuantity()) {
+        if(capacity.getList_capacity().get(name)==null || new_quantity <= capacity.getList_capacity().get(name).getQuantity()) {
             this.quantity += quantity;
         }
         else {

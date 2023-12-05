@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class Board {
     public List<Card> cardsPlayed;
-
     public Board(){
         this.cardsPlayed = new ArrayList<>();
     }

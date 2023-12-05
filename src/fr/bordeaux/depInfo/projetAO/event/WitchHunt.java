@@ -4,6 +4,7 @@ import fr.bordeaux.depInfo.projetAO.Board;
 import fr.bordeaux.depInfo.projetAO.PlayerHand;
 import fr.bordeaux.depInfo.projetAO.Turn;
 
+
 import java.util.Random;
 
 public class WitchHunt implements Event_Interface{

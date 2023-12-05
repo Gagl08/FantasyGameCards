@@ -17,22 +17,24 @@ public class Event_Manager {
         switch (choice){
             case (0):
                 this.event = new Deflation();
-                System.out.println("The economy has never been better ! You got additionnal gold coins :)");
+                System.out.println("The economy has never been better ! You get additionnal gold coins in the next turn :)");
                 break;
             case (1):
                 this.event = new Inflation();
-                System.out.println("The economy has never been worse ! You got less gold coins :(");
+                System.out.println("The economy has never been worse ! You get less gold coins in the next turn :(");
                 break;
             case (2):
                 this.event = new WitchHunt();
-                System.out.println("Witches has been found in your village ! Christ compels you to burn those heathens !");
+                System.out.println("Witches has been found in your village ! Christ compels you to burn those heathens in the next turn!");
                 break;
             default:
+                System.out.println("The village is peaceful for the next turn...");
                 this.event = null;
-
         }
     }
     public void startEvent(Turn turn, Board board, PlayerHand player){
+        System.out.println("Randomly choosing event ");
         if (this.event != null) this.event.startEvent(turn, board, player);
+        newEvent();
     }
 }
