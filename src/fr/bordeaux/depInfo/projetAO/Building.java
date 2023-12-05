@@ -47,24 +47,6 @@ public class Building implements Building_Interface{
         return this.active && this.nbWorkerNeeded == 0;
     }
 
-    /**
-     * Produces resources for the given player hand (placeholder method, needs implementation).
-     *
-     * @param player The player hand for which resources are produced.
-     */
-    public void produceRessource(PlayerHand player) {
-        // Implementation for producing resources
-    }
-
-    /**
-     * Consumes resources from the given player hand (placeholder method, needs implementation).
-     *
-     * @param player The player hand from which resources are consumed.
-     */
-    public void consumeRessource(PlayerHand player) {
-        // Implementation for consuming resources
-    }
-
 //////////////////GETTERS and SETTERS///////////////////
     /**
      * Retrieves the name of the building.

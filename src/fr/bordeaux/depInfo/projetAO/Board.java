@@ -41,14 +41,16 @@ public class Board {
         ressourcesStockage = stockageRessource.list_ressource;
 
         for (Card card : this.cardsPlayed) {
-            HashMap<String, Ressource> ressourcesCard;
-            ressourcesCard = card.getBuilding().getResConso().list_ressource;
+            if(card.building.isActive()){
+                HashMap<String, Ressource> ressourcesCard;
+                ressourcesCard = card.getBuilding().getResConso().list_ressource;
 
-            for (String key : ressourcesCard.keySet()) {
-                if (! (ressourcesCard.get(key).getQuantity() <= ressourcesStockage.get(key).getQuantity())) {
-                    throw new RessourceException("No ressources available now !");
-                }else {
-                    ressourcesStockage.get(key).lessQuantity(ressourcesCard.get(key).getQuantity());
+                for (String key : ressourcesCard.keySet()) {
+                    if (!(ressourcesCard.get(key).getQuantity() <= ressourcesStockage.get(key).getQuantity())) {
+                        throw new RessourceException("No ressources available now !");
+                    } else {
+                        ressourcesStockage.get(key).lessQuantity(ressourcesCard.get(key).getQuantity());
+                    }
                 }
             }
         }
@@ -61,12 +63,14 @@ public class Board {
         ressourcesStockage = stockageRessource.list_ressource;
 
         for (Card card : this.cardsPlayed) {
-            HashMap<String, Ressource> ressourcesCard;
-            ressourcesCard = card.getBuilding().getResProd().list_ressource;
+            if(card.building.isActive()) {
+                HashMap<String, Ressource> ressourcesCard;
+                ressourcesCard = card.getBuilding().getResProd().list_ressource;
 
-            for (String key : ressourcesCard.keySet()) {
-                System.out.println(key);
-                ressourcesStockage.get(key).addQuantity(capacity, key + "_Capacity", ressourcesCard.get(key).getQuantity());
+                for (String key : ressourcesCard.keySet()) {
+                    System.out.println(key);
+                    ressourcesStockage.get(key).addQuantity(capacity, key + "_Capacity", ressourcesCard.get(key).getQuantity());
+                }
             }
         }
         stockageRessource.setList_ressource(ressourcesStockage);

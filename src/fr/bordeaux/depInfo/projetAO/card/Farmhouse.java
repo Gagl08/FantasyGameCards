@@ -23,6 +23,7 @@ public class Farmhouse extends Decorateur {
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
+    private final int tempsDeConstruction;
 
     public Farmhouse(Building_Interface building_interface) {
         super(building_interface);
@@ -45,6 +46,8 @@ public class Farmhouse extends Decorateur {
 
         Food_capacity food_capacity = new Food_capacity(100);
         getCapacity.addCapacity(food_capacity);
+
+        tempsDeConstruction = 1;
     }
 
     @Override
