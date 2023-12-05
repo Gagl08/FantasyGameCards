@@ -28,6 +28,13 @@ public class Turn {
      * Use the first when you create the game
      * Declare and Initialise the principal fonctions an Object to start a game
      */
+
+    public StockageCapacity stockageCapacity ;
+    public StockageRessource stockageRessource;
+    public Turn(){
+        this.stockageRessource = createStockageRessource();
+        this.stockageCapacity = createStockageCapacity();
+    }
     public void lunchGamme (){
         int turn=1;
         int iturn;
@@ -35,15 +42,11 @@ public class Turn {
         PlayerHand playerHand = new PlayerHand();
         Board board = new Board();
 
-        StockageCapacity stockageCapacity ;
-        StockageRessource stockageRessource;
-
         for (int i = 0; i < 5; i++) {
             playerHand.draw(turn);
         }
-        stockageRessource=createStockageRessource();
-        stockageCapacity = createStockageCapacity();
-        iturn = gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
+
+        iturn = gamme(board,playerHand,turn,this.stockageRessource,this.stockageCapacity);
         System.out.println("You have play " + iturn + "turn's");
     }
 
