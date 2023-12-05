@@ -65,6 +65,7 @@ public class Board {
             ressourcesCard = card.getBuilding().getResProd().list_ressource;
 
             for (String key : ressourcesCard.keySet()) {
+                System.out.println(key);
                 ressourcesStockage.get(key).addQuantity(capacity, key + "_Capacity", ressourcesCard.get(key).getQuantity());
             }
         }

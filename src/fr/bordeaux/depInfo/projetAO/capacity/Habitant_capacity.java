@@ -13,5 +13,7 @@ public class Habitant_capacity extends Capacity {
 
     public Habitant_capacity(int quantity) {
         super(quantity);
+        this.name = "Habitant_Capacity";
+
     }
 }

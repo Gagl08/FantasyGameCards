@@ -22,32 +22,32 @@ public class TakeCard {
 
         //Early Card
         Building_Interface building = new Building("");
-        Building_Interface farm = new Farm(building);
-        Building_Interface forest = new Forest(building);
-        Building_Interface farmhouse = new Farmhouse(building);
-        Building_Interface lumberjack = new Lumberjack(building);
-        Building_Interface cow = new Cow(building);
-        Building_Interface sheep = new Sheep(building);
-        Building_Interface stoneMine = new StoneMine(building);
+        //Building_Interface farm = new Farm(building);
+        //Building_Interface forest = new Forest(building);
+        //Building_Interface farmhouse = new Farmhouse(building);
+        //Building_Interface lumberjack = new Lumberjack(building);
+        //Building_Interface cow = new Cow(building);
+        //Building_Interface sheep = new Sheep(building);
+        //Building_Interface stoneMine = new StoneMine(building);
         Building_Interface goldMine = new GoldMine(building);
 
-        list.add(farm);
+        /*list.add(farm);
         list.add(forest);
         list.add(farmhouse);
         list.add(lumberjack);
         list.add(sheep);
-        list.add(stoneMine);
+        list.add(stoneMine);*/
         list.add(goldMine);
 
         //Late Card
-        if (turn > 10) {
+        /*if (turn > 10) {
             Building_Interface sawmill = new Sawmill(building);
             Building_Interface windmill = new Windmill(building);
 
             list.add(cow);
             list.add(windmill);
             list.add(sawmill);
-        }
+        }*/
         return list;
     }
 
