@@ -7,6 +7,7 @@
 package fr.bordeaux.depInfo.projetAO;
 
 import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
+import fr.bordeaux.depInfo.projetAO.event.Event_Manager;
 import fr.bordeaux.depInfo.projetAO.exception.RessourceException;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
@@ -204,6 +205,8 @@ public class Turn {
             System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
             return 0;
         }
+        Event_Manager eventManager = new Event_Manager();
+        eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
     }
