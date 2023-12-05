@@ -17,7 +17,7 @@ import java.util.List;
  * Board game is where the player places the cards, it is the "map" of the game.
  */
 public class Board {
-    List<Card> cardsPlayed;
+    public List<Card> cardsPlayed;
 
     public Board(){
         this.cardsPlayed = new ArrayList<>();
