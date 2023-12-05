@@ -49,4 +49,8 @@ public class StockageCapacity {
     public void addCapacity(Capacity capacity) {
         this.list_capacity.put(capacity.getName(), capacity);
     }
+
+    public void setList_capacity(HashMap<String, Capacity> list_capacity) {
+        this.list_capacity=list_capacity;
+    }
 }

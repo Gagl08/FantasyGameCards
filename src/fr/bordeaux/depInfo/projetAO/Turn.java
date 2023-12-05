@@ -64,7 +64,7 @@ public class Turn {
         list.put("Gold", new Ressource(40));
         list.put("Brique", new Ressource(10));
         list.put("Lumber", new Ressource(12));
-        list.put("Habitant", new Ressource(25));
+        list.put("Habitant", new Ressource(5));
         list.put("Weapon", new Ressource(0));
         list.put("Tool", new Ressource(0));
         list.put("Defence", new Ressource(0));
@@ -81,15 +81,14 @@ public class Turn {
         StockageCapacity stockageCapacity = new StockageCapacity();
 
         HashMap<String, Capacity> list = new HashMap<>();
-        list.put("Food_Capacity", new Capacity(25));
-        list.put("Wood_Capacity", new Capacity(100));
-        list.put("Stone_Capacity", new Capacity(50));
+        list.put("Food_Capacity", new Capacity(30));
+        list.put("Wood_Capacity", new Capacity(30));
+        list.put("Stone_Capacity", new Capacity(30));
         list.put("Coal_Capacity", new Capacity(10));
         list.put("Iron_Capacity", new Capacity(10));
-        list.put("Gold_Capacity", new Capacity(100));
         list.put("Brique_Capacity", new Capacity(25));
         list.put("Lumber_Capacity", new Capacity(25));
-        list.put("Habitant_Capacity", new Capacity(100));
+        list.put("Habitant_Capacity", new Capacity(5));
         list.put("Weapon_Capacity", new Capacity(10));
         list.put("Tool_Capacity", new Capacity(10));
 
@@ -114,12 +113,23 @@ public class Turn {
         //Start the IHM
         while (true){
             System.out.println(turn);
-
+            String key_capacity;
+            int capa;
             //Ressources
             System.out.println("Ressource : ");
             for (String key : stockageRessource.list_ressource.keySet()) {
+                key_capacity = key + "_Capacity";
+                try {
+                    capa = stockageCapacity.list_capacity.get(key_capacity).getQuantity();
+                } catch (Exception e){
+                    capa = -5;
+                }
                 System.out.print(key + " : ");
-                System.out.print(stockageRessource.list_ressource.get(key).getQuantity()+ ", ");
+                System.out.print(stockageRessource.list_ressource.get(key).getQuantity());
+                if(capa != -5){
+                    System.out.print("/"+capa);
+                }
+                System.out.print(", ");
             }
 
             //BOARD
@@ -165,6 +175,7 @@ public class Turn {
                 choix=Integer.parseInt(choixMenu);
                 if (choix<playerHand.hand.size()) {
                     try {
+                        playerHand.gatherCapacity(playerHand.hand.get(choix),stockageCapacity);
                         playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
                         playerHand.playCard(playerHand.hand.get(choix), board);
                         return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);

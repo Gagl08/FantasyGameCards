@@ -6,6 +6,7 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
 import fr.bordeaux.depInfo.projetAO.exception.RessourceException;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
@@ -72,5 +73,21 @@ public class PlayerHand {
         deletedChoice=entree.nextLine();
         int delChoice = Integer.parseInt(deletedChoice);
         this.hand.remove(delChoice);
+    }
+
+    public void gatherCapacity(Card card, StockageCapacity stockageCapacity) {
+        HashMap<String, Capacity> capacityCard;
+        HashMap<String, Capacity> capacityStockage;
+
+        capacityCard = card.getBuilding().getCapacity().list_capacity;
+        capacityStockage = stockageCapacity.list_capacity;
+
+        System.out.println(capacityCard);
+        System.out.println(capacityStockage);
+
+        for(String key : capacityCard.keySet()){
+            capacityStockage.get(key).addQuantity(capacityCard.get(key).getQuantity());
+        }
+        stockageCapacity.setList_capacity(capacityStockage);
     }
 }

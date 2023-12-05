@@ -32,7 +32,9 @@ public class Capacity {
     /**
      * @param quantity to add
      */
-    public void addQuantity(int quantity){this.quantity=this.quantity+quantity;}
+    public void addQuantity(int quantity) {
+        this.quantity+=quantity;
+    }
 
     /**
      * @param quantity to less

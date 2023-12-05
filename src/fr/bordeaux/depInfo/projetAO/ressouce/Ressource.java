@@ -46,7 +46,7 @@ public class Ressource {
         }
         else {
             this.quantity = capacity.getList_capacity().get(name).getQuantity();
-            System.out.println("Too much" + name + "in stock, you cannot get more !");
+            System.out.println("Too much " + name + " in stock, you cannot get more !");
         }
     }
 

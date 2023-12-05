@@ -48,8 +48,6 @@ public class Decorateur implements Building_Interface {
         return this.building_interface.getResConstruct();
     }
 
-
-
     @Override
     public StockageRessource getResConso() {
         return this.building_interface.getResConso();
