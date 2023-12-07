@@ -87,8 +87,8 @@ public class Turn {
         StockageCapacity stockageCapacity = new StockageCapacity();
 
         HashMap<String, Capacity> list = new HashMap<>();
-        list.put("Food_Capacity", new Capacity(30));
-        list.put("Wood_Capacity", new Capacity(30));
+        list.put("Food_Capacity", new Capacity(50));
+        list.put("Wood_Capacity", new Capacity(50));
         list.put("Stone_Capacity", new Capacity(30));
         list.put("Coal_Capacity", new Capacity(10));
         list.put("Iron_Capacity", new Capacity(10));
@@ -201,13 +201,12 @@ public class Turn {
         if(playerHand.hand.size()>7){
             playerHand.deleteOneCard();
         }
-        board.gatherRessources(stockageCapacity, stockageRessource);
-        try {
-            board.consumeRessources(stockageRessource);
-        }catch (RessourceException e){
-            System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
+        //try {
+            board.updateBoard(stockageRessource, stockageCapacity);
+        /*}
+        catch (RessourceException e){
             return 0;
-        }
+        }*/
         this.eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
