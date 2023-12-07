@@ -30,4 +30,7 @@ public interface Building_Interface {
     void setTimerBuild(int timerBuild);
     boolean isFunctional();
 
+    void addObserver(Habitant_Inteface_Building_Observer observer);
+    void removeObserver(Habitant_Inteface_Building_Observer observer);
+    void notifyObservers();
 }

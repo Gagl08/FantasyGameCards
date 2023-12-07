@@ -17,13 +17,25 @@ import java.util.List;
  * Board game is where the player places the cards, it is the "map" of the game.
  */
 public class Board {
+    private final List<Habitant_Inteface_Building_Observer> habitantsAvaillable=new ArrayList<>();
+
     public List<Card> cardsPlayed;
     public Board(){
         this.cardsPlayed = new ArrayList<>();
+        for(int i = 0; i<5;i++){
+            habitantsAvaillable.add(new Habitant());
+        }
     }
     public void addCard(Card card){
         this.cardsPlayed.add(card);
+        for(int i = 0; i<card.getBuilding().getNbHabAllowed();i++){
+            habitantsAvaillable.add(new Habitant());
+        }
+        for (Habitant_Inteface_Building_Observer habitant_inteface_building_observer : habitantsAvaillable) {
+            card.getBuilding().addObserver(habitant_inteface_building_observer);
+        }
     }
+
     public void removeCard(Card card){
         this.cardsPlayed.remove(card);
     }
@@ -83,14 +95,27 @@ public class Board {
                     card.getBuilding().setTimerBuild(time-1);
                 }else{
                     card.getBuilding().setActive(true);
+                    card.getBuilding().notifyObservers();
                 }
             }
         }
     }
 
-    public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity) throws RessourceException {
-        gatherRessources(stockageCapacity, stockageRessource);
+    public void updateHabitant(){
+        for (Habitant_Inteface_Building_Observer habitant : this.habitantsAvaillable){
+            if (habitant.getWork()){
+                for (Card card : cardsPlayed){
+                    card.getBuilding().removeObserver(habitant);
+                }
+            }
+        }
+    }
+
+    public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity)throws RessourceException{
+        updateHabitant();
         updateBuilding();
+        System.out.println("Nb Jobless : "+ habitantsAvaillable.size());
+        gatherRessources(stockageCapacity, stockageRessource);
         consumeRessources(stockageRessource);
     }
 }

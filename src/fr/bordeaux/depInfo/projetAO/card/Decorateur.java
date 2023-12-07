@@ -7,6 +7,7 @@
 package fr.bordeaux.depInfo.projetAO.card;
 
 import fr.bordeaux.depInfo.projetAO.Building_Interface;
+import fr.bordeaux.depInfo.projetAO.Habitant_Inteface_Building_Observer;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 
@@ -87,5 +88,14 @@ public class Decorateur implements Building_Interface {
     public boolean isFunctional() {
         return this.building_interface.isFunctional();
     }
+
+    @Override
+    public void addObserver(Habitant_Inteface_Building_Observer observer) {}
+
+    @Override
+    public void removeObserver(Habitant_Inteface_Building_Observer observer) {}
+
+    @Override
+    public void notifyObservers() {}
 
 }

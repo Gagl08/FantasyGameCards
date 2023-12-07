@@ -6,11 +6,14 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Building Class
  * Building compose a Card
  */
-public class Building implements Building_Interface{
+public class Building implements Building_Interface,Building_Observable {
     // The name of the building.
     final String name;
     int nbHabAllowed;
@@ -21,6 +24,8 @@ public class Building implements Building_Interface{
     StockageCapacity capacity;
     boolean active;
     int timerBuild;
+
+    private List<Habitant_Inteface_Building_Observer> observers = new ArrayList<>();
 
 ////////////////////////////////////////////////////////
 /////////////////////CONSTRUCTORS///////////////////////
@@ -165,4 +170,20 @@ public class Building implements Building_Interface{
         this.timerBuild = timerBuild;
     }
 
+    @Override
+    public void addObserver(Habitant_Inteface_Building_Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Habitant_Inteface_Building_Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Habitant_Inteface_Building_Observer observer : observers) {
+            observer.update(this);
+        }
+    }
 }
