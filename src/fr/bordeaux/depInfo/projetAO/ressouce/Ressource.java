@@ -5,10 +5,8 @@ import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 public class Ressource {
     int quantity;
     String name;
-    int callno; //DEBUG : permet de savoir combien de fois on a appelé la classe Ressource
 
     public Ressource(int quantity){
-        this.callno = 0;
         this.quantity = quantity;
         this.name="";
     }
@@ -54,7 +52,6 @@ public class Ressource {
      * @param quantity to less
      */
     public void lessQuantity(int quantity){
-        this.callno ++;
         this.quantity -= quantity;
     }
 }

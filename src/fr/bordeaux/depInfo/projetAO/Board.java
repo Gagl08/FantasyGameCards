@@ -88,13 +88,9 @@ public class Board {
         }
     }
 
-    public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity){
+    public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity) throws RessourceException {
         gatherRessources(stockageCapacity, stockageRessource);
         updateBuilding();
-        try {
-            consumeRessources(stockageRessource);
-        }catch (RessourceException e){
-            System.out.println(e.getName());
-        }
+        consumeRessources(stockageRessource);
     }
 }

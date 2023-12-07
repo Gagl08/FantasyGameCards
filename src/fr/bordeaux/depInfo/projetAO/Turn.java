@@ -201,12 +201,12 @@ public class Turn {
         if(playerHand.hand.size()>7){
             playerHand.deleteOneCard();
         }
-        //try {
+        try {
             board.updateBoard(stockageRessource, stockageCapacity);
-        /*}
+        }
         catch (RessourceException e){
             return 0;
-        }*/
+        }
         this.eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
