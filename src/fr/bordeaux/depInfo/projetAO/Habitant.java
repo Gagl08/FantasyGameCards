@@ -1,5 +1,15 @@
+/*
+ * Approche Objet
+ * TD 6                               Fantasy Cards Game
+ * Projet universitaire                         2023/2024
+ */
+
 package fr.bordeaux.depInfo.projetAO;
 
+/**
+ * Object Habitant use to make usefull the building
+ * Compose by a useless name and a var to know if is working or not
+ */
 public class Habitant implements Habitant_Inteface {
     private boolean work;
 

@@ -66,6 +66,9 @@ public class PlayerHand {
         stockageRessource.setList_ressource(ressourcesStockage);
     }
 
+    /**
+     * Delete one Card of the hand
+     */
     public void deleteOneCard (){
         Scanner entree=new Scanner(System.in);
         String deletedChoice;
@@ -75,6 +78,11 @@ public class PlayerHand {
         this.hand.remove(delChoice);
     }
 
+    /**
+     * Collect a capacity of the building
+     * @param card to get the building to know
+     * @param stockageCapacity to increment
+     */
     public void gatherCapacity(Card card, StockageCapacity stockageCapacity) {
         HashMap<String, Capacity> capacityCard;
         HashMap<String, Capacity> capacityStockage;

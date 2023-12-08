@@ -172,6 +172,9 @@ public class Turn {
                 System.out.print(ANSI_PURPLE +" --> Cost : "+ ANSI_RESET);
                 for (String key : playerHand.hand.get(i).building.getResConstruct().list_ressource.keySet()){
                     System.out.print(ANSI_PURPLE + playerHand.hand.get(i).getBuilding().getResConstruct().list_ressource.get(key).getName() + " : " );
+                    if (playerHand.hand.get(i).getBuilding().getResConstruct().list_ressource.get(key).getQuantity()>stockageRessource.list_ressource.get(key).getQuantity()){
+                        System.out.print(ANSI_RED);
+                    }
                     System.out.print(playerHand.hand.get(i).getBuilding().getResConstruct().list_ressource.get(key).getQuantity()+ ", "+ANSI_RESET);
                 }
                 System.out.print(ANSI_GREEN +" --> Produce : "+ ANSI_RESET);

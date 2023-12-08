@@ -1,9 +1,20 @@
+/*
+ * Approche Objet
+ * TD 6                               Fantasy Cards Game
+ * Projet universitaire                         2023/2024
+ */
+
 package fr.bordeaux.depInfo.projetAO.event;
+
 import fr.bordeaux.depInfo.projetAO.Board;
 import fr.bordeaux.depInfo.projetAO.PlayerHand;
 import fr.bordeaux.depInfo.projetAO.Turn;
 
 import java.util.Random;
+
+/**
+ * Strategy to an event system
+ */
 public class Event_Manager {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_MAGENTA = "\u001B[35m";

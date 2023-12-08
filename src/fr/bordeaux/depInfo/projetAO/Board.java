@@ -22,12 +22,22 @@ public class Board {
     private final List<Habitant_Inteface> habitantsAvaillable=new ArrayList<>();
 
     public List<Card> cardsPlayed;
+
+    /**
+     * Constructor
+     */
     public Board(){
         this.cardsPlayed = new ArrayList<>();
         for(int i = 0; i<5;i++){
             habitantsAvaillable.add(new Habitant());
         }
     }
+
+    /**
+     * When you add a card to the board you need to know how many people work an live in this building
+     * You need to notify the Jobless if the building have a job
+     * @param card to add
+     */
     public void addCard(Card card) {
         this.cardsPlayed.add(card);
 
@@ -40,6 +50,9 @@ public class Board {
         for (int i = 0; i < card.getBuilding().getNbHabAllowed(); i++) {
             Habitant_Inteface newHabitant = new Habitant();
             habitantsAvaillable.add(newHabitant);
+            for(Card cardbis : this.cardsPlayed){
+                cardbis.getBuilding().addObserver(newHabitant);
+            }
             card.getBuilding().addObserver(newHabitant);
         }
 
@@ -51,6 +64,11 @@ public class Board {
         card.getBuilding().notifyObservers();
     }
 
+    /**
+     * Dellete the ressource consume by the card
+     * @param stockageRessource stockage to delete
+     * @throws RessourceException raise if you don t have all ressource s
+     */
     public void consumeRessources(StockageRessource stockageRessource) throws RessourceException {
         //Parcourt chaque carte pour consommer les ressources du joueur pour maintenir les bâtiments
         HashMap<String, Ressource> ressourcesStockage;
@@ -73,6 +91,11 @@ public class Board {
         stockageRessource.setList_ressource(ressourcesStockage);
     }
 
+    /**
+     * Get all ressource to add to a Stockage ressource Ans add it one to one
+     * @param capacity max to add the ressource
+     * @param stockageRessource stockage to add
+     */
     public void gatherRessources(StockageCapacity capacity,StockageRessource stockageRessource){
         //Parcourt chaque carte pour augmenter les ressources du joueur
         HashMap<String, Ressource> ressourcesStockage;
@@ -91,6 +114,9 @@ public class Board {
         stockageRessource.setList_ressource(ressourcesStockage);
     }
 
+    /**
+     * Know if a building is ready to work or if in construction or if is have anoth worker
+     */
     public void updateBuilding(){
         for (Card card : this.cardsPlayed){
             if(!card.getBuilding().isActive()){
@@ -100,12 +126,17 @@ public class Board {
                 }else{
                     if(card.getBuilding().getNbWorkerActual()==card.getBuilding().getNbWorkerNeeded()){
                         card.getBuilding().setActive(true);
+                    }else{
+                        card.getBuilding().notifyObservers();
                     }
                 }
             }
         }
     }
 
+    /**
+     * Know if somone can find a Job
+     */
     public void updateHabitant() {
         Iterator<Habitant_Inteface> iterator = habitantsAvaillable.iterator();
         while (iterator.hasNext()) {
@@ -119,6 +150,12 @@ public class Board {
         }
     }
 
+    /**
+     * Call all fonction to update the board at the end of a turn
+     * @param stockageRessource to moddify
+     * @param stockageCapacity to moddify
+     * @throws RessourceException raise if you don t have all ressource s
+     */
     public void updateBoard(StockageRessource stockageRessource,StockageCapacity stockageCapacity)throws RessourceException{
         updateHabitant();
         updateBuilding();
