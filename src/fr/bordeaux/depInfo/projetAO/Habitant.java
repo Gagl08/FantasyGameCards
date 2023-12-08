@@ -1,32 +1,24 @@
-/*
- * Approche Objet
- * TD 6                               Fantasy Cards Game
- * Projet universitaire                         2023/2024
- */
-
 package fr.bordeaux.depInfo.projetAO;
 
-import fr.bordeaux.depInfo.projetAO.capacity.Capacity;
-
-/**
- * Object Habitant.
- */
-public class Habitant implements Habitant_Inteface_Building_Observer {
+public class Habitant implements Habitant_Inteface {
     private boolean work;
+
     public Habitant() {
-        String name = "Pierre";
         this.work = false;
     }
 
     @Override
     public void update(Building building) {
-        if (building.nbWorkerNeeded>0){
-            this.work=true;
-            building.nbWorkerNeeded--;
+        System.out.println("je travail");
+        System.out.println(building.getNbWorkerNeeded()+ "/" +building.getNbWorkerActual());
+        if (building.getNbWorkerNeeded() > building.getNbWorkerActual()) {
+            this.work = true;
+            building.setNbWorkerActual(building.getNbWorkerActual()+1);
+            System.out.println(building.getNbWorkerActual());
         }
     }
 
-    public boolean getWork(){
+    public boolean getWork() {
         return this.work;
     }
 }

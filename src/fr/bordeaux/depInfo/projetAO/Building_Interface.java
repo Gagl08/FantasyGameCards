@@ -6,8 +6,6 @@
 
 package fr.bordeaux.depInfo.projetAO;
 
-import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
-
 import java.util.ArrayList;
 
 /**
@@ -19,6 +17,8 @@ public interface Building_Interface {
     void setNbHabAllowed(int nbHabAllowed);
     int getNbWorkerNeeded();
     void setNbWorkerNeeded(int nbWorkerNeeded);
+    int getNbWorkerActual();
+    void setNbWorkerActual(int nbWorkerNeeded);
     StockageRessource getResConstruct();
     StockageRessource getResConso();
 
@@ -30,7 +30,9 @@ public interface Building_Interface {
     void setTimerBuild(int timerBuild);
     boolean isFunctional();
 
-    void addObserver(Habitant_Inteface_Building_Observer observer);
-    void removeObserver(Habitant_Inteface_Building_Observer observer);
+    void addObserver(Habitant_Inteface observer);
+    void removeObserver(Habitant_Inteface observer);
     void notifyObservers();
+
+    ArrayList<Habitant_Inteface> getObservers();
 }

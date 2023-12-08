@@ -11,13 +11,15 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+
 
 /**
  * Board game is where the player places the cards, it is the "map" of the game.
  */
 public class Board {
-    private final List<Habitant_Inteface_Building_Observer> habitantsAvaillable=new ArrayList<>();
+    private final List<Habitant_Inteface> habitantsAvaillable=new ArrayList<>();
 
     public List<Card> cardsPlayed;
     public Board(){
@@ -31,9 +33,15 @@ public class Board {
         for(int i = 0; i<card.getBuilding().getNbHabAllowed();i++){
             habitantsAvaillable.add(new Habitant());
         }
-        for (Habitant_Inteface_Building_Observer habitant_inteface_building_observer : habitantsAvaillable) {
-            card.getBuilding().addObserver(habitant_inteface_building_observer);
+        for (Habitant_Inteface observer : habitantsAvaillable) {
+            card.getBuilding().addObserver(observer);
+            System.out.println("Observer added");
         }
+        for(int i = 0; i < card.getBuilding().getObservers().size();i++){
+            System.out.println("a " + i);
+        }
+        System.out.println(card.getBuilding().getObservers());
+        card.getBuilding().notifyObservers();
     }
 
     public void removeCard(Card card){
@@ -79,7 +87,6 @@ public class Board {
                 ressourcesCard = card.getBuilding().getResProd().list_ressource;
 
                 for (String key : ressourcesCard.keySet()) {
-                    System.out.println(key);
                     ressourcesStockage.get(key).addQuantity(capacity, key + "_Capacity", ressourcesCard.get(key).getQuantity());
                 }
             }
@@ -95,18 +102,23 @@ public class Board {
                     card.getBuilding().setTimerBuild(time-1);
                 }else{
                     card.getBuilding().setActive(true);
-                    card.getBuilding().notifyObservers();
                 }
             }
         }
     }
 
-    public void updateHabitant(){
-        for (Habitant_Inteface_Building_Observer habitant : this.habitantsAvaillable){
-            if (habitant.getWork()){
-                for (Card card : cardsPlayed){
+    public void updateHabitant() {
+        List<Habitant_Inteface> list_bis = new ArrayList<>();
+        list_bis.addAll(this.habitantsAvaillable);
+
+        Iterator<Habitant_Inteface> iterator = habitantsAvaillable.iterator();
+        while (iterator.hasNext()) {
+            Habitant_Inteface habitant = iterator.next();
+            if (habitant.getWork()) {
+                for (Card card : cardsPlayed) {
                     card.getBuilding().removeObserver(habitant);
                 }
+                iterator.remove();
             }
         }
     }

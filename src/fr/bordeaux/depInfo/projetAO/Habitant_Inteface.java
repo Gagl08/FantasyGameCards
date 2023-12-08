@@ -1,6 +1,6 @@
 package fr.bordeaux.depInfo.projetAO;
 
-public interface Habitant_Inteface_Building_Observer {
+public interface Habitant_Inteface {
     void update(Building building);
     boolean getWork();
 }

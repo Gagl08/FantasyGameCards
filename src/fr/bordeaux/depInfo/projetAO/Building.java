@@ -7,25 +7,25 @@
 package fr.bordeaux.depInfo.projetAO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Building Class
  * Building compose a Card
  */
-public class Building implements Building_Interface,Building_Observable {
+public class Building implements Building_Interface {
     // The name of the building.
-    final String name;
-    int nbHabAllowed;
-    int nbWorkerNeeded;
-    StockageRessource resConstruct;
-    StockageRessource resConso;
-    StockageRessource resProd;
-    StockageCapacity capacity;
-    boolean active;
-    int timerBuild;
+    private String name;
+    private int nbHabAllowed;
+    private int nbWorkerNeeded;
+    private int nbWorkerActual;
+    private StockageRessource resConstruct;
+    private StockageRessource resConso;
+    private StockageRessource resProd;
+    private StockageCapacity capacity;
+    private boolean active;
+    private int timerBuild;
 
-    private List<Habitant_Inteface_Building_Observer> observers = new ArrayList<>();
+    private ArrayList<Habitant_Inteface> observers = new ArrayList<>();
 
 ////////////////////////////////////////////////////////
 /////////////////////CONSTRUCTORS///////////////////////
@@ -33,12 +33,15 @@ public class Building implements Building_Interface,Building_Observable {
         this.name = name;
         this.nbHabAllowed = 0;
         this.nbWorkerNeeded = 0;
+        this.nbWorkerActual = 0;
         this.active = false;
         this.timerBuild = 0;
         this.resConstruct = new StockageRessource();
         this.resConso = new StockageRessource();
         this.resProd = new StockageRessource();
         this.capacity = new StockageCapacity();
+
+        this.observers = new ArrayList<>();
     }
 
 ////////////////////////////////////////////////////////
@@ -98,6 +101,23 @@ public class Building implements Building_Interface,Building_Observable {
         this.nbWorkerNeeded = nbWorkerNeeded;
     }
 
+    /**
+     * Retrieves the number of workers needed for the building.
+     *
+     * @return The number of workers needed.
+     */
+    public int getNbWorkerActual() {
+        return nbWorkerActual;
+    }
+
+    /**
+     * Sets the number of workers Actual for the building.
+     *
+     * @param nbWorkerActual The new number of workers Actual.
+     */
+    public void setNbWorkerActual(int nbWorkerActual) {
+        this.nbWorkerActual = nbWorkerActual;
+    }
     /**
      * Retrieves the capacity of the construction
      *
@@ -171,19 +191,23 @@ public class Building implements Building_Interface,Building_Observable {
     }
 
     @Override
-    public void addObserver(Habitant_Inteface_Building_Observer observer) {
-        observers.add(observer);
+    public void addObserver(Habitant_Inteface observer) {
+        this.observers.add(observer);
     }
 
     @Override
-    public void removeObserver(Habitant_Inteface_Building_Observer observer) {
+    public void removeObserver(Habitant_Inteface observer) {
         observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-        for (Habitant_Inteface_Building_Observer observer : observers) {
+        for (Habitant_Inteface observer : observers) {
             observer.update(this);
         }
+    }
+
+    public ArrayList<Habitant_Inteface> getObservers() {
+        return observers;
     }
 }

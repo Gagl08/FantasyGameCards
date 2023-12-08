@@ -141,7 +141,12 @@ public class Turn {
             //BOARD
             System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
+                for(Habitant_Inteface observer : board.cardsPlayed.get(i).getBuilding().getObservers()){
+                    System.out.println(observer.getWork());
+                }
                 System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
+                System.out.print(board.cardsPlayed.get(i).getBuilding().getNbWorkerActual());
+                System.out.print("/"+board.cardsPlayed.get(i).getBuilding().getNbWorkerNeeded());
             }
 
             //HAND

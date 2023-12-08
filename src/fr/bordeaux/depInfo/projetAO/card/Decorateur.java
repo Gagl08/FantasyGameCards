@@ -7,9 +7,11 @@
 package fr.bordeaux.depInfo.projetAO.card;
 
 import fr.bordeaux.depInfo.projetAO.Building_Interface;
-import fr.bordeaux.depInfo.projetAO.Habitant_Inteface_Building_Observer;
+import fr.bordeaux.depInfo.projetAO.Habitant_Inteface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
+
+import java.util.ArrayList;
 
 
 public class Decorateur implements Building_Interface {
@@ -42,6 +44,16 @@ public class Decorateur implements Building_Interface {
     @Override
     public void setNbWorkerNeeded(int nbWorkerNeeded) {
         this.building_interface.setNbWorkerNeeded(nbWorkerNeeded);
+    }
+
+    @Override
+    public int getNbWorkerActual() {
+        return this.building_interface.getNbWorkerActual();
+    }
+
+    @Override
+    public void setNbWorkerActual(int nbWorkerActual) {
+        this.building_interface.setNbWorkerActual(nbWorkerActual);
     }
 
     @Override
@@ -90,12 +102,23 @@ public class Decorateur implements Building_Interface {
     }
 
     @Override
-    public void addObserver(Habitant_Inteface_Building_Observer observer) {}
+    public void addObserver(Habitant_Inteface observer) {
+        this.building_interface.addObserver(observer);
+    }
 
     @Override
-    public void removeObserver(Habitant_Inteface_Building_Observer observer) {}
+    public void removeObserver(Habitant_Inteface observer) {
+        this.building_interface.removeObserver(observer);
+    }
 
     @Override
-    public void notifyObservers() {}
+    public void notifyObservers() {
+        this.building_interface.notifyObservers();
+    }
+
+    @Override
+    public ArrayList <Habitant_Inteface> getObservers() {
+        return this.building_interface.getObservers();
+    }
 
 }

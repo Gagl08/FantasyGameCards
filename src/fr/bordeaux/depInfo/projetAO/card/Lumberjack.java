@@ -74,7 +74,8 @@ public class Lumberjack extends Decorateur {
 
     @Override
     public int getNbHabAllowed() {
-        return super.getNbHabAllowed()+5;
+        super.setNbHabAllowed(5);
+        return super.getNbHabAllowed();
     }
 
     @Override
