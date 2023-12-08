@@ -22,7 +22,6 @@ public class Habitant implements Habitant_Inteface {
         if (building.getNbWorkerNeeded() > building.getNbWorkerActual()) {
             this.work = true;
             building.setNbWorkerActual(building.getNbWorkerActual()+1);
-            System.out.println(building.getNbWorkerActual());
         }
     }
 
