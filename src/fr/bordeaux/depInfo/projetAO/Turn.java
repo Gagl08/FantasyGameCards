@@ -20,6 +20,7 @@ import java.util.Scanner;
  */
 public class Turn {
     //Color use for the interface
+    public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -153,12 +154,15 @@ public class Turn {
             //BOARD
             System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
+                if (!board.cardsPlayed.get(i).building.isActive()){
+                    System.out.print(ANSI_YELLOW);
+                }
                 System.out.print(board.cardsPlayed.get(i).getBuilding().getName());
                 if (info){
                     System.out.print(board.cardsPlayed.get(i).getBuilding().getNbWorkerActual());
                     System.out.print("/"+board.cardsPlayed.get(i).getBuilding().getNbWorkerNeeded());
                 }
-                System.out.print(", ");
+                System.out.print(", "+ANSI_RESET);
             }
 
             //HAND
@@ -192,8 +196,13 @@ public class Turn {
             //Stop the game
             }else if(Objects.equals(choixMenu,"ff")) {
                 return 0;
-            }else if(Objects.equals(choixMenu, "i")){
-                info =!info;
+            }else if(Objects.equals(choixMenu, "i")) {
+                info = !info;
+            }else if(Objects.equals(choixMenu,"c")){
+                System.out.println("d : to pass the turn");
+                System.out.println("ff : to give up");
+                System.out.println("i : to show the information of the building played");
+                System.out.println("c : to show the commands");
             //Play a card
             }else {
                 try {

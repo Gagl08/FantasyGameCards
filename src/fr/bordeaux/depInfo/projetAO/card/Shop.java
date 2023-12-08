@@ -15,35 +15,31 @@ import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.HashMap;
 
-public class GoldMine extends Decorateur {
+public class Shop extends Decorateur {
 
     private final StockageRessource getRessourceConsome = new StockageRessource();
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
 
-
-    public GoldMine(Building_Interface building_interface) {
+    public Shop(Building_Interface building_interface) {
         super(building_interface);
         Gold gold = new Gold(1);
-        Wood wood = new Wood(2);
+        Food food = new Food(5);
         this.getRessourceConsome.addRessource(gold);
-        this.getRessourceConsome.addRessource(wood);
-        wood = new Wood(15);
+        this.getRessourceConsome.addRessource(food);
+        Wood wood = new Wood(15);
         HashMap<String,Ressource> list = new HashMap<>();
         list.put(wood.getName(), wood);
         list.put(gold.getName(),gold);
         this.getRessourceConstruct.addRessource(list);
-        gold = new Gold(15);
+        gold = new Gold(6);
         this.getRessourceProduct.addRessource(gold);
-
-        Stone_capacity stone_capacity = new Stone_capacity(10);
-        this.getCapacity.addCapacity(stone_capacity);
     }
 
     @Override
     public String getName() {
-        return super.getName()+"Gold Mine";
+        return super.getName()+"Shop";
     }
 
     @Override
@@ -66,7 +62,7 @@ public class GoldMine extends Decorateur {
 
     @Override
     public int getNbWorkerNeeded() {
-        super.setNbWorkerNeeded(10);
+        super.setNbWorkerNeeded(1);
         return super.getNbWorkerNeeded();
     }
 }

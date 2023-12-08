@@ -10,40 +10,46 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
-import fr.bordeaux.depInfo.projetAO.capacity.Stone_capacity;
+import fr.bordeaux.depInfo.projetAO.capacity.Habitant_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.*;
 
 import java.util.HashMap;
 
-public class GoldMine extends Decorateur {
+public class House extends Decorateur {
 
     private final StockageRessource getRessourceConsome = new StockageRessource();
     private final StockageRessource getRessourceConstruct = new StockageRessource();
     private final StockageRessource getRessourceProduct = new StockageRessource();
     private final StockageCapacity getCapacity = new StockageCapacity();
+    private int tempsDeConstruction;
 
-
-    public GoldMine(Building_Interface building_interface) {
+    public House(Building_Interface building_interface) {
         super(building_interface);
-        Gold gold = new Gold(1);
-        Wood wood = new Wood(2);
-        this.getRessourceConsome.addRessource(gold);
-        this.getRessourceConsome.addRessource(wood);
-        wood = new Wood(15);
-        HashMap<String,Ressource> list = new HashMap<>();
-        list.put(wood.getName(), wood);
-        list.put(gold.getName(),gold);
-        this.getRessourceConstruct.addRessource(list);
-        gold = new Gold(15);
-        this.getRessourceProduct.addRessource(gold);
+        Gold gold = new Gold(5);
+        Food food = new Food(25);
+        HashMap<String,Ressource> list1 = new HashMap<>();
+        list1.put(gold.getName(),gold);
+        list1.put(food.getName(),food);
+        getRessourceConsome.addRessource(list1);
 
-        Stone_capacity stone_capacity = new Stone_capacity(10);
-        this.getCapacity.addCapacity(stone_capacity);
+        Wood wood = new Wood(30);
+        Stone stone = new Stone(15);
+        gold = new Gold(20);
+        HashMap<String,Ressource> list2 = new HashMap<>();
+        list2.put(wood.getName(),wood);
+        list2.put(gold.getName(),gold);
+        list2.put(stone.getName(),stone);
+        getRessourceConstruct.addRessource(list2);
+
+        Habitant_capacity habitant_capacity = new Habitant_capacity(25);
+        getCapacity.addCapacity(habitant_capacity);
+
+        tempsDeConstruction = 3;
     }
 
     @Override
     public String getName() {
-        return super.getName()+"Gold Mine";
+        return super.getName()+"House";
     }
 
     @Override
@@ -66,7 +72,21 @@ public class GoldMine extends Decorateur {
 
     @Override
     public int getNbWorkerNeeded() {
-        super.setNbWorkerNeeded(10);
+        super.setNbWorkerNeeded(0);
         return super.getNbWorkerNeeded();
+    }
+
+    @Override
+    public int getNbHabAllowed() {
+        return super.getNbHabAllowed()+15;
+    }
+
+    @Override
+    public int getTimerBuild() {
+        return tempsDeConstruction;
+    }
+
+    public void setTimerBuild(int time){
+        tempsDeConstruction = time;
     }
 }

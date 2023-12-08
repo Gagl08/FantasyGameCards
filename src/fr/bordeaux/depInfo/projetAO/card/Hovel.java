@@ -10,6 +10,7 @@ import fr.bordeaux.depInfo.projetAO.Building_Interface;
 import fr.bordeaux.depInfo.projetAO.StockageCapacity;
 import fr.bordeaux.depInfo.projetAO.StockageRessource;
 import fr.bordeaux.depInfo.projetAO.capacity.Food_capacity;
+import fr.bordeaux.depInfo.projetAO.capacity.Habitant_capacity;
 import fr.bordeaux.depInfo.projetAO.ressouce.Food;
 import fr.bordeaux.depInfo.projetAO.ressouce.Gold;
 import fr.bordeaux.depInfo.projetAO.ressouce.Ressource;
@@ -17,7 +18,7 @@ import fr.bordeaux.depInfo.projetAO.ressouce.Wood;
 
 import java.util.HashMap;
 
-public class Farmhouse extends Decorateur {
+public class Hovel extends Decorateur {
 
     private final StockageRessource getRessourceConsome = new StockageRessource();
     private final StockageRessource getRessourceConstruct = new StockageRessource();
@@ -25,34 +26,31 @@ public class Farmhouse extends Decorateur {
     private final StockageCapacity getCapacity = new StockageCapacity();
     private int tempsDeConstruction;
 
-    public Farmhouse(Building_Interface building_interface) {
+    public Hovel(Building_Interface building_interface) {
         super(building_interface);
         Gold gold = new Gold(1);
-        Wood wood = new Wood(5);
+        Food food = new Food(10);
         HashMap<String,Ressource> list1 = new HashMap<>();
         list1.put(gold.getName(),gold);
-        list1.put(wood.getName(),wood);
+        list1.put(food.getName(),food);
         getRessourceConsome.addRessource(list1);
 
-        wood = new Wood(10);
+        Wood wood = new Wood(15);
         gold = new Gold(10);
         HashMap<String,Ressource> list2 = new HashMap<>();
         list2.put(wood.getName(),wood);
         list2.put(gold.getName(),gold);
         getRessourceConstruct.addRessource(list2);
 
-        Food food = new Food(5);
-        getRessourceProduct.addRessource(food);
-
-        Food_capacity food_capacity = new Food_capacity(100);
-        getCapacity.addCapacity(food_capacity);
+        Habitant_capacity habitant_capacity = new Habitant_capacity(10);
+        getCapacity.addCapacity(habitant_capacity);
 
         tempsDeConstruction = 1;
     }
 
     @Override
     public String getName() {
-        return super.getName()+"Farmhouse";
+        return super.getName()+"Hovel";
     }
 
     @Override
@@ -75,13 +73,13 @@ public class Farmhouse extends Decorateur {
 
     @Override
     public int getNbWorkerNeeded() {
-        super.setNbWorkerNeeded(2);
+        super.setNbWorkerNeeded(0);
         return super.getNbWorkerNeeded();
     }
 
     @Override
     public int getNbHabAllowed() {
-        return super.getNbHabAllowed()+5;
+        return super.getNbHabAllowed()+7;
     }
 
     @Override
