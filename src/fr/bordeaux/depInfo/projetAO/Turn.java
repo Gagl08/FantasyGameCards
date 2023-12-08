@@ -62,6 +62,7 @@ public class Turn {
         }
 
         iturn = gamme(board,playerHand,turn,this.stockageRessource,this.stockageCapacity);
+        System.out.println("Gamme Over ! ");
         System.out.println("You have play " + iturn + "turn's");
     }
 
