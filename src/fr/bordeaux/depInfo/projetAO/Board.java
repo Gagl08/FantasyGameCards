@@ -51,17 +51,6 @@ public class Board {
         card.getBuilding().notifyObservers();
     }
 
-
-    public void removeCard(Card card){
-        this.cardsPlayed.remove(card);
-    }
-    public void deactivateBuilding(int indexCard){
-        this.cardsPlayed.get(indexCard).getBuilding().setActive(false);
-    }
-    public void activateBuilding(int indexCard){
-        this.cardsPlayed.get(indexCard).getBuilding().setActive(true);
-    }
-
     public void consumeRessources(StockageRessource stockageRessource) throws RessourceException {
         //Parcourt chaque carte pour consommer les ressources du joueur pour maintenir les bâtiments
         HashMap<String, Ressource> ressourcesStockage;

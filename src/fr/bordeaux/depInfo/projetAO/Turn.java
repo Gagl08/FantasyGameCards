@@ -19,33 +19,43 @@ import java.util.Scanner;
  * Class to create an genere a game
  */
 public class Turn {
+    //Color use for the interface
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_MAGENTA = "\u001B[35m";
 
     /**
      * Use the first when you create the game
      * Declare and Initialise the principal fonctions an Object to start a game
      */
-
     public StockageCapacity stockageCapacity ;
     public StockageRessource stockageRessource;
     Event_Manager eventManager;
+
+    /**
+     * Constructeur Turn
+     */
     public Turn(){
         this.eventManager = new Event_Manager();
         this.stockageRessource = createStockageRessource();
         this.stockageCapacity = createStockageCapacity();
     }
+
+    /**
+     * First fonction use to start a gamme
+     * Call the fonction for initialise the stockage
+     */
     public void lunchGamme (){
         int turn=1;
         int iturn;
 
+        //Create Board of gamme and the hand of the player
         PlayerHand playerHand = new PlayerHand();
         Board board = new Board();
 
+        //Draw the card
         for (int i = 0; i < 5; i++) {
             playerHand.draw(turn);
         }
@@ -62,15 +72,14 @@ public class Turn {
         StockageRessource stockageRessource = new StockageRessource();
 
         HashMap<String, Ressource> list = new HashMap<>();
-        list.put("Food", new Ressource(50));
-        list.put("Wood", new Ressource(50));
-        list.put("Stone", new Ressource(25));
+        list.put("Food", new Ressource(25));
+        list.put("Wood", new Ressource(25));
+        list.put("Stone", new Ressource(15));
         list.put("Coal", new Ressource(0));
         list.put("Iron", new Ressource(0));
-        list.put("Gold", new Ressource(40));
-        list.put("Brique", new Ressource(10));
-        list.put("Lumber", new Ressource(12));
-        list.put("Habitant", new Ressource(5));
+        list.put("Gold", new Ressource(30));
+        list.put("Brique", new Ressource(0));
+        list.put("Lumber", new Ressource(0));
         list.put("Weapon", new Ressource(0));
         list.put("Tool", new Ressource(0));
         list.put("Defence", new Ressource(0));
@@ -115,6 +124,7 @@ public class Turn {
         Scanner entree=new Scanner(System.in);
         String choixMenu;
         int choix;
+        boolean info = false;
 
         //Start the IHM
         while (true){
@@ -143,9 +153,12 @@ public class Turn {
             //BOARD
             System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
-                System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
-                System.out.print(board.cardsPlayed.get(i).getBuilding().getNbWorkerActual());
-                System.out.print("/"+board.cardsPlayed.get(i).getBuilding().getNbWorkerNeeded());
+                System.out.print(board.cardsPlayed.get(i).getBuilding().getName());
+                if (info){
+                    System.out.print(board.cardsPlayed.get(i).getBuilding().getNbWorkerActual());
+                    System.out.print("/"+board.cardsPlayed.get(i).getBuilding().getNbWorkerNeeded());
+                }
+                System.out.print(", ");
             }
 
             //HAND
@@ -175,25 +188,30 @@ public class Turn {
 
             //Pass turn
             if(Objects.equals(choixMenu, "d")){
-                return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
-
+                    return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
             //Stop the game
             }else if(Objects.equals(choixMenu,"ff")) {
                 return 0;
+            }else if(Objects.equals(choixMenu, "i")){
+                info =!info;
             //Play a card
             }else {
-                choix=Integer.parseInt(choixMenu);
-                if (choix<playerHand.hand.size()) {
-                    try {
-                        playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
-                        playerHand.gatherCapacity(playerHand.hand.get(choix),stockageCapacity);
-                        playerHand.playCard(playerHand.hand.get(choix), board);
-                        return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
-                    }catch (RessourceException e){
-                        System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
+                try {
+                    choix=Integer.parseInt(choixMenu);
+                    if (choix<playerHand.hand.size()) {
+                        try {
+                            playerHand.constructCard(playerHand.hand.get(choix),stockageRessource);
+                            playerHand.gatherCapacity(playerHand.hand.get(choix),stockageCapacity);
+                            playerHand.playCard(playerHand.hand.get(choix), board);
+                            return passTurn(board,playerHand,turn,stockageRessource,stockageCapacity);
+                        }catch (RessourceException e){
+                            System.out.println(ANSI_RED + e.getName() + ANSI_RESET);
+                        }
+                    } else {
+                        System.out.println("No Card to play");
                     }
-                } else {
-                    System.out.println("No Card to play");
+                }catch (Exception e){
+                    System.out.println(ANSI_RED + "Unknow command"+ANSI_RESET);
                 }
             }
         }
@@ -212,7 +230,6 @@ public class Turn {
             return 0;
         }
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
-
     }
 }
 
