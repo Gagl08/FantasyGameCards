@@ -8,9 +8,7 @@ public class Habitant implements Habitant_Inteface {
     }
 
     @Override
-    public void update(Building building) {
-        System.out.println("je travail");
-        System.out.println(building.getNbWorkerNeeded()+ "/" +building.getNbWorkerActual());
+    public void update(Building_Interface building) {
         if (building.getNbWorkerNeeded() > building.getNbWorkerActual()) {
             this.work = true;
             building.setNbWorkerActual(building.getNbWorkerActual()+1);

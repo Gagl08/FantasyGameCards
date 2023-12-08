@@ -118,11 +118,13 @@ public class Turn {
 
         //Start the IHM
         while (true){
-            System.out.println(turn);
+            System.out.println("Turn : "+turn + "\n");
             String key_capacity;
             int capa;
+
+            this.eventManager.startEvent(this, board, playerHand);
             //Ressources
-            System.out.println("Ressource : ");
+            System.out.print("Ressource : ");
             for (String key : stockageRessource.list_ressource.keySet()) {
                 key_capacity = key + "_Capacity";
                 try {
@@ -141,9 +143,6 @@ public class Turn {
             //BOARD
             System.out.print("\nBoard : ");
             for (int i = 0; i <board.cardsPlayed.size();i++ ) {
-                for(Habitant_Inteface observer : board.cardsPlayed.get(i).getBuilding().getObservers()){
-                    System.out.println(observer.getWork());
-                }
                 System.out.print(board.cardsPlayed.get(i).getBuilding().getName()+", ");
                 System.out.print(board.cardsPlayed.get(i).getBuilding().getNbWorkerActual());
                 System.out.print("/"+board.cardsPlayed.get(i).getBuilding().getNbWorkerNeeded());
@@ -212,7 +211,6 @@ public class Turn {
         catch (RessourceException e){
             return 0;
         }
-        this.eventManager.startEvent(this, board, playerHand);
         return 1+gamme(board,playerHand,turn,stockageRessource,stockageCapacity);
 
     }

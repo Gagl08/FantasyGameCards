@@ -28,21 +28,29 @@ public class Board {
             habitantsAvaillable.add(new Habitant());
         }
     }
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.cardsPlayed.add(card);
-        for(int i = 0; i<card.getBuilding().getNbHabAllowed();i++){
-            habitantsAvaillable.add(new Habitant());
-        }
+
+        // Add residents to the building observers list
         for (Habitant_Inteface observer : habitantsAvaillable) {
             card.getBuilding().addObserver(observer);
-            System.out.println("Observer added");
         }
-        for(int i = 0; i < card.getBuilding().getObservers().size();i++){
-            System.out.println("a " + i);
+
+        // Add new inhabitants to the available list
+        for (int i = 0; i < card.getBuilding().getNbHabAllowed(); i++) {
+            Habitant_Inteface newHabitant = new Habitant();
+            habitantsAvaillable.add(newHabitant);
+            card.getBuilding().addObserver(newHabitant);
         }
-        System.out.println(card.getBuilding().getObservers());
+
+        // Update the number of workers needed
+        card.getBuilding().setNbWorkerNeeded(card.getBuilding().getNbHabAllowed());
+        card.getBuilding().getNbWorkerNeeded();
+
+        //Notify observers after additions
         card.getBuilding().notifyObservers();
     }
+
 
     public void removeCard(Card card){
         this.cardsPlayed.remove(card);
@@ -101,16 +109,15 @@ public class Board {
                 if(time>0){
                     card.getBuilding().setTimerBuild(time-1);
                 }else{
-                    card.getBuilding().setActive(true);
+                    if(card.getBuilding().getNbWorkerActual()==card.getBuilding().getNbWorkerNeeded()){
+                        card.getBuilding().setActive(true);
+                    }
                 }
             }
         }
     }
 
     public void updateHabitant() {
-        List<Habitant_Inteface> list_bis = new ArrayList<>();
-        list_bis.addAll(this.habitantsAvaillable);
-
         Iterator<Habitant_Inteface> iterator = habitantsAvaillable.iterator();
         while (iterator.hasNext()) {
             Habitant_Inteface habitant = iterator.next();
